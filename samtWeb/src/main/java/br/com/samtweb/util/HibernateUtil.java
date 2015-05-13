@@ -6,9 +6,10 @@ package br.com.samtweb.util;
  * @dt. inclusao: 12/05/2015
  */
 
-import javax.validation.Configuration;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.SessionFactory;
 import org.hibernate.service.ServiceRegistryBuilder;
+import org.hibernate.service.ServiceRegistry;
 
 public class HibernateUtil {
 
@@ -16,14 +17,21 @@ public class HibernateUtil {
     public static final String HIBERNATE_SESSION = "hibernate_session";
     static{
         try{
-            System.out.println("Tentando abrir uma session factory.");
+            System.out.println("Tentando configurar uma session factory.");
             Configuration configuration = new Configuration().configure();
-            ServiceRegistryBuilder serviceRegistryBuilder = new ServiceRegistryBuilder();
+            ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
            
-            sessionFactory = configuration.buildSessionFactory();
-            
-        }catch(Exception e){
-            
+            sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+            System.out.println("Session Factory criada com sucesso!");
+        }catch(Exception ex){
+            System.out.println("Ocorreu um erro ao iniciar a session factory." + ex);
+            throw new ExceptionInInitializerError(ex);
         }
     }
+
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+                    
 }
