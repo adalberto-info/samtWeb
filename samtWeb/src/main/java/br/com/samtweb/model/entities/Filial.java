@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.hibernate.annotations.ForeignKey;
@@ -44,9 +45,12 @@ public class Filial implements Serializable{
     private Integer fk_municipio;
 
     @OneToMany(mappedBy = "filial", fetch = FetchType.LAZY)
-    @ForeignKey(name="UsuarioFilial")
+    @ForeignKey(name="fkFilial")
     private List<Usuario> usuarios;
     
+    @ManyToOne(optional=false)
+    @ForeignKey(name="fk_municipio")
+    private Filial filial;
     
     public Filial() {
     }

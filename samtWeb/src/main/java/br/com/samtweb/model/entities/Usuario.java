@@ -33,7 +33,7 @@ public class Usuario implements Serializable {
     private String dc_senha;
 
     @ManyToOne(optional=false)
-    @ForeignKey(name = "UsuarioFilial")
+    @ForeignKey(name = "fkFilial")
     private Usuario usuario;
     
     
