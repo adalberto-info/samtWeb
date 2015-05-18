@@ -6,7 +6,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.ForeignKey;
 
 /**
  * @autor: Adalberto Kamida
@@ -30,6 +32,11 @@ public class Usuario implements Serializable {
     @Column(name="dc_senha", nullable=false, length=12)
     private String dc_senha;
 
+    @ManyToOne(optional=false)
+    @ForeignKey(name = "UsuarioFilial")
+    private Usuario usuario;
+    
+    
     public Usuario() {
     }
 

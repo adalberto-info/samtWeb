@@ -2,11 +2,15 @@
 package br.com.samtweb.model.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.ForeignKey;
 
 /**
  * @autor: Adalberto Kamida
@@ -15,7 +19,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="Filial")
+@Table(name="filial")
 public class Filial implements Serializable{
 
     private static final long serialVersionUID = 1L;
@@ -39,8 +43,10 @@ public class Filial implements Serializable{
     @Column(name="fk_municipio", nullable=false, length=5)
     private Integer fk_municipio;
 
-    @OneToMany(mappedBy = "Filial", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "filial", fetch = FetchType.LAZY)
     @ForeignKey(name="UsuarioFilial")
+    private List<Usuario> usuarios;
+    
     
     public Filial() {
     }
@@ -109,6 +115,16 @@ public class Filial implements Serializable{
         this.fk_municipio = fk_municipio;
     }
 
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    
+    
     @Override
     public int hashCode() {
         int hash = 7;
