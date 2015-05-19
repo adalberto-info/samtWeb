@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -27,8 +28,8 @@ public class Filial implements Serializable{
     
     @Id
     @GeneratedValue
-    @Column(name="id_Filial", nullable=false)
-    private Integer id_Filial;
+    @Column(name="id_filial", nullable=false)
+    private Integer id_filial;
     @Column(name="dc_nomeFilial", nullable=false, length=40)
     private String dc_nomeFilial;
     @Column(name="dc_endereco", nullable=false, length=40)
@@ -45,22 +46,23 @@ public class Filial implements Serializable{
     private Integer fk_municipio;
 
     @OneToMany(mappedBy = "filial", fetch = FetchType.LAZY)
-    @ForeignKey(name="fkFilial")
+    @ForeignKey(name="FilialUsuario")
     private List<Usuario> usuarios;
     
     @ManyToOne(optional=false)
-    @ForeignKey(name="fk_municipio")
+    @ForeignKey(name="MunicipioFilial")
+    @JoinColumn(name="id_municipio", referencedColumnName="id_municipio")
     private Filial filial;
     
     public Filial() {
     }
 
     public Integer getId_Filial() {
-        return id_Filial;
+        return id_filial;
     }
 
-    public void setId_Filial(Integer id_Filial) {
-        this.id_Filial = id_Filial;
+    public void setId_filial(Integer id_filial) {
+        this.id_filial = id_filial;
     }
 
     public String getDc_nomeFilial() {
@@ -132,7 +134,7 @@ public class Filial implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + (this.id_Filial != null ? this.id_Filial.hashCode() : 0);
+        hash = 79 * hash + (this.id_filial != null ? this.id_filial.hashCode() : 0);
         return hash;
     }
 
@@ -145,7 +147,7 @@ public class Filial implements Serializable{
             return false;
         }
         final Filial other = (Filial) obj;
-        if (this.id_Filial != other.id_Filial && (this.id_Filial == null || !this.id_Filial.equals(other.id_Filial))) {
+        if (this.id_filial != other.id_filial && (this.id_filial == null || !this.id_filial.equals(other.id_filial))) {
             return false;
         }
         return true;

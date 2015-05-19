@@ -4,6 +4,7 @@ package br.com.samtweb.model.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -26,7 +27,7 @@ public class Uf implements Serializable {
     @Column(name="dc_descricao", nullable=false)
     private String dc_descricao;
 
-    @OneToMany
+    @OneToMany(mappedBy="uf", fetch=FetchType.LAZY)
     @ForeignKey(name="fk_uf")
     private List<Municipio> municipio;
     

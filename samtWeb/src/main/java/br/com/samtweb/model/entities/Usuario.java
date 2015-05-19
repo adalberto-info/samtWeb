@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.ForeignKey;
@@ -23,7 +24,7 @@ public class Usuario implements Serializable {
     
     @Id
     @GeneratedValue
-    @Column(name="IdUsuario", nullable=false)
+    @Column(name="id_usuario", nullable=false)
     private Integer idUsuario;
     @Column(name="fk_filial", nullable=false)
     private Integer fk_filial;
@@ -33,8 +34,9 @@ public class Usuario implements Serializable {
     private String dc_senha;
 
     @ManyToOne(optional=false)
-    @ForeignKey(name = "fkFilial")
-    private Usuario usuario;
+    @ForeignKey(name = "FilialUsuario")
+    @JoinColumn(name = "id_filial", referencedColumnName="id_filial")
+    private Filial filial;
     
     
     public Usuario() {

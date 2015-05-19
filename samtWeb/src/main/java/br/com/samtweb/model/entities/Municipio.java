@@ -5,8 +5,10 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -30,13 +32,15 @@ public class Municipio implements Serializable{
     @Column(name="dc_municipio", length= 40, nullable=false)
     private String dc_municipio; 
     
-    @OneToMany
-    @ForeignKey(name="fk_municipio")
+    @OneToMany(mappedBy="municipio", fetch=FetchType.LAZY)
+    @ForeignKey(name="MunicipioFilial")
     private List<Filial> filial;
 
     @ManyToOne(optional=false)
-    @ForeignKey(name="fk_uf")
-    private Municipio municipio;
+    @ForeignKey(name="MunicipioUF")
+    @JoinColumn(name="id_uf", referencedColumnName="id_uf")
+    private Uf uf;
+    
     
     public Municipio() {
     }
