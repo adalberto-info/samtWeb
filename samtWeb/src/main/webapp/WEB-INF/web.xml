@@ -4,8 +4,6 @@ Autor: Adalberto Kamida
 dt. inclusão: 19/05/2015
 
 -->
-
-<?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
@@ -37,12 +35,13 @@ dt. inclusão: 19/05/2015
     </context-param> 
 
     <!-- Configurações do tema do PrimeFaces -->
+<!--
     <dependecy>
         <groupId>org.primefaces.themes</groupId>
         <artifactId>sam</artifactId>
-        <version>3.4.2</version>
+        <version>1.0.8</version>
     </dependecy>
-    
+-->    
     <context-param>  
         <param-name>primefaces.THEME</param-name>  
         <param-value>sam</param-value>  
@@ -76,7 +75,7 @@ dt. inclusão: 19/05/2015
         </web-resource-collection>
         <auth-constraint/>
     </security-constraint>
-    
+   
     <!-- Configurações do PrimeFaces -->
     
     <servlet>
@@ -90,12 +89,12 @@ dt. inclusão: 19/05/2015
     
     <!-- Filtros de Upload -->
     
-<!--    <filter>  
+    <filter>  
         <filter-name>PrimeFaces FileUpload Filter</filter-name>  
         <filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>  
     </filter>  
     <filter-mapping>  
         <filter-name>PrimeFaces FileUpload Filter</filter-name>  
         <servlet-name>Faces Servlet</servlet-name>  
-    </filter-mapping> -->
+    </filter-mapping> 
 </web-app>
