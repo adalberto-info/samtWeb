@@ -42,19 +42,18 @@ public class Filial implements Serializable{
     private String dc_telefone;
     @Column(name="dc_responsavel", nullable=false, length=45)
     private String dc_responsavel; 
-    @Column(name="fk_municipio", nullable=false, length=5)
-    private Integer fk_municipio;
-
+    
     @OneToMany(mappedBy = "filial", fetch = FetchType.LAZY)
     @ForeignKey(name="FilialUsuario")
     private List<Usuario> usuarios;
     
     @ManyToOne(optional=false)
-    @ForeignKey(name="MunicipioFilial")
-    @JoinColumn(name="id_municipio", referencedColumnName="id_municipio")
-    private Filial filial;
+    @ForeignKey(name="FilialMunicipio")
+    @JoinColumn(name="fk_municipio", referencedColumnName="id_municipio")
+    private Municipio municipio;
     
     public Filial() {
+        this.municipio = new Municipio();
     }
 
     public Integer getId_Filial() {
@@ -113,12 +112,12 @@ public class Filial implements Serializable{
         this.dc_responsavel = dc_responsavel;
     }
 
-    public Integer getFk_municipio() {
-        return fk_municipio;
+    public Municipio getMunicipio() {
+        return municipio;
     }
 
-    public void setFk_municipio(Integer fk_municipio) {
-        this.fk_municipio = fk_municipio;
+    public void setMunicipio(Municipio municipio) {
+        this.municipio = municipio;
     }
 
     public List<Usuario> getUsuarios() {

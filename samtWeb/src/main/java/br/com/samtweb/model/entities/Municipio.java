@@ -32,17 +32,19 @@ public class Municipio implements Serializable{
     @Column(name="dc_municipio", length= 40, nullable=false)
     private String dc_municipio; 
     
+    
     @OneToMany(mappedBy="municipio", fetch=FetchType.LAZY)
-    @ForeignKey(name="MunicipioFilial")
+    @ForeignKey(name="FilialMunicipio")
     private List<Filial> filial;
 
     @ManyToOne(optional=false)
-    @ForeignKey(name="MunicipioUF")
-    @JoinColumn(name="id_uf", referencedColumnName="id_uf")
+    @ForeignKey(name="MunicipioUf")
+    @JoinColumn(name="fk_uf", referencedColumnName="id_uf")
     private Uf uf;
     
     
     public Municipio() {
+        this.uf = new Uf();
     }
     
     public Integer getId_municipio() {
@@ -67,6 +69,14 @@ public class Municipio implements Serializable{
 
     public void setFilial(List<Filial> filial) {
         this.filial = filial;
+    }
+
+    public Uf getUf() {
+        return uf;
+    }
+
+    public void setUf(Uf uf) {
+        this.uf = uf;
     }
 
     @Override

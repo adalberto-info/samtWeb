@@ -4,16 +4,22 @@ package br.com.samtweb.model.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import org.hibernate.annotations.ForeignKey;
 
 /**
  * @autor: Adalberto Kamida
  * @dt. inclusao: 18/05/2015
  */
+
+@Entity
+@Table(name="uf")
+
 public class Uf implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -28,7 +34,7 @@ public class Uf implements Serializable {
     private String dc_descricao;
 
     @OneToMany(mappedBy="uf", fetch=FetchType.LAZY)
-    @ForeignKey(name="fk_uf")
+    @ForeignKey(name="MunicipioUf")
     private List<Municipio> municipio;
     
     public Uf() {

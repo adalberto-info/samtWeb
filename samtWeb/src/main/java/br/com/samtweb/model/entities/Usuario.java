@@ -26,8 +26,6 @@ public class Usuario implements Serializable {
     @GeneratedValue
     @Column(name="id_usuario", nullable=false)
     private Integer idUsuario;
-    @Column(name="fk_filial", nullable=false)
-    private Integer fk_filial;
     @Column(name="dc_nomeUsuario", nullable=false, length=40)
     private String dc_nomeUsuario;
     @Column(name="dc_senha", nullable=false, length=12)
@@ -35,7 +33,7 @@ public class Usuario implements Serializable {
 
     @ManyToOne(optional=false)
     @ForeignKey(name = "FilialUsuario")
-    @JoinColumn(name = "id_filial", referencedColumnName="id_filial")
+    @JoinColumn(name = "fk_filial", referencedColumnName="id_filial")
     private Filial filial;
     
     
@@ -48,14 +46,6 @@ public class Usuario implements Serializable {
 
     public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    public Integer getFk_filial() {
-        return fk_filial;
-    }
-
-    public void setFk_filial(Integer fk_filial) {
-        this.fk_filial = fk_filial;
     }
 
     public String getDc_nomeUsuario() {
