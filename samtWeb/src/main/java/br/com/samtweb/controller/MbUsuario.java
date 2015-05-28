@@ -15,7 +15,7 @@ import javax.faces.context.FacesContext;
  * @autor: Adalberto Kamida
  * @dt. inclusao: 27/05/2015
  */
-@ManagedBean(name = "mbCidade")
+@ManagedBean(name = "mbUsuario")
 @SessionScoped
 public class MbUsuario implements Serializable {
 
@@ -42,7 +42,7 @@ public class MbUsuario implements Serializable {
     }
 
     public String addUsuario() {
-        if (usuario.getIdUsuario() == null || usuario.getIdUsuario() == 0) {
+        if (usuario.getId_usuario() == null || usuario.getId_usuario() == 0) {
             insertUsuario();
         } else {
             updateUsuario();

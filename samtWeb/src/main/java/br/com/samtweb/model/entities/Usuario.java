@@ -25,7 +25,7 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue
     @Column(name="id_usuario", nullable=false)
-    private Integer idUsuario;
+    private Integer id_usuario;
     @Column(name="dc_nomeUsuario", nullable=false, length=40)
     private String dc_nomeUsuario;
     @Column(name="dc_senha", nullable=false, length=12)
@@ -40,12 +40,12 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Integer getIdUsuario() {
-        return idUsuario;
+    public Integer getId_usuario() {
+        return id_usuario;
     }
 
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setId_usuario(Integer id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     public String getDc_nomeUsuario() {
@@ -67,7 +67,7 @@ public class Usuario implements Serializable {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 17 * hash + (this.idUsuario != null ? this.idUsuario.hashCode() : 0);
+        hash = 17 * hash + (this.id_usuario != null ? this.id_usuario.hashCode() : 0);
         return hash;
     }
 
@@ -80,7 +80,7 @@ public class Usuario implements Serializable {
             return false;
         }
         final Usuario other = (Usuario) obj;
-        if (this.idUsuario != other.idUsuario && (this.idUsuario == null || !this.idUsuario.equals(other.idUsuario))) {
+        if (this.id_usuario != other.id_usuario && (this.id_usuario == null || !this.id_usuario.equals(other.id_usuario))) {
             return false;
         }
         return true;
