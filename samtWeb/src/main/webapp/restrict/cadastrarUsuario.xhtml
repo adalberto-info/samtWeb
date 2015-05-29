@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns="http://www.w3.org/1999/xhtml"
@@ -22,6 +22,10 @@
                         <h:outputLabel for="dc_nomeUsuario" value="Nome: "/>
                         <p:inputText id="dc_nomeUsuario" size="40" value="#{mbUsuario.usuario.dc_nomeUsuario}" onkeyup="this.value = this.value.toUpperCase()" 
                             required="true" requiredMessage="O campo [nome] é obrigatório." />
+                        <h:outputLabel for="dc_senha" value="Senha: "/>
+                        <p:inputText id="dc_senha" size="12" value="#{mbUsuario.usuario.dc_senha}" required="true" requiredMessage="O campo [senha] é obrigatório."/>
+                        <h:outputLabel for="fk_filial" value="Filial: "/>
+                        <p:inputText id="fk_filial" size="11" value="#{mbUsuario.usuario.filial.id_Filial}" required="true" requiredMessage="O campo [filial] é obrigatório."/>
                         <p:panel>
                             <p:commandButton value="Salvar" action="#{mbUsuario.addUsuario}" image="ui-icon ui-icon-disk" update="@form"/>
                             <p:commandButton value="Cancelar" actionListener="#{mbUsuario.limpaUsuario}" image="ui-icon ui-icon-close" update="@form"/>

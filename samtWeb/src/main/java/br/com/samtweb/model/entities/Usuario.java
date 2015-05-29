@@ -64,6 +64,14 @@ public class Usuario implements Serializable {
         this.dc_senha = dc_senha;
     }
 
+    public Filial getFilial() {
+        return filial;
+    }
+
+    public void setFilial(Filial filial) {
+        this.filial = filial;
+    }
+
     @Override
     public int hashCode() {
         int hash = 5;
