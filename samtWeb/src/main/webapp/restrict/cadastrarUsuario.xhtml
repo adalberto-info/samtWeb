@@ -29,7 +29,7 @@
                             <f:selectItems value="#{bbFilial.filiais}" var="filial" itemValue="#{filial.id_Filial}" itemLabel="#{filial.dc_nomeFilial}"/>
                         </p:selectOneMenu> 
                         <p:panel>
-                            <p:commandButton value="Salvar" action="#{mbUsuario.addUsuario}" image="ui-icon ui-icon-disk" update="@form"/>
+                            <p:commandButton value="Salvar" action="#{mbUsuario.addUsuario}" image="ui-icon ui-icon-disk" update="@form "/>
                             <p:commandButton value="Cancelar" actionListener="#{mbUsuario.limpaUsuario}" image="ui-icon ui-icon-close" update="@form"/>
                         </p:panel>
                     </h:panelGrid>    
