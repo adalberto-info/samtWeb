@@ -38,6 +38,7 @@ public class Usuario implements Serializable {
     
     
     public Usuario() {
+        this.filial = new Filial();
     }
 
     public Integer getId_usuario() {

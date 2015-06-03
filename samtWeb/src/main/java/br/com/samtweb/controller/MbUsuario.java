@@ -2,6 +2,7 @@ package br.com.samtweb.controller;
 
 import br.com.samtweb.model.dao.HibernateDAO;
 import br.com.samtweb.model.dao.InterfaceDAO;
+import br.com.samtweb.model.entities.Filial;
 import br.com.samtweb.model.entities.Usuario;
 import br.com.samtweb.util.FacesContextUtil;
 import java.io.Serializable;
@@ -22,8 +23,11 @@ public class MbUsuario implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Usuario usuario = new Usuario();
+    private Filial filial = new Filial(); 
+    
     private List<Usuario> usuarios;
-
+    private List<Filial> filiais;
+    
     public MbUsuario() {
     }
 
@@ -32,9 +36,15 @@ public class MbUsuario implements Serializable {
         return usuarioDAO;
     }
 
+    private InterfaceDAO<Filial> filialDAO() {
+        InterfaceDAO<Filial> filialDAO = new HibernateDAO<Filial>(Filial.class, FacesContextUtil.getRequestSession());
+        return filialDAO;
+    }
+    
     public String limpaUsuario() {
         usuario = new Usuario();
-        return "/restrict/cadastrarUsuario.faces";
+        filial = new Filial();
+        return editUsuario();
     }
 
     public String editUsuario() {
@@ -63,6 +73,7 @@ public class MbUsuario implements Serializable {
 
     public void deleteUsuario(){
         usuarioDAO().remove(usuario);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro excluído com sucesso!", ""));
     }
 
     public Usuario getUsuario() {
@@ -81,6 +92,23 @@ public class MbUsuario implements Serializable {
     public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
     }
-    
-    
+
+    public List<Filial> getFiliais() {
+        return filiais;
+    }
+
+    public void setFiliais(List<Filial> filiais) {
+        filiais = filialDAO().getEntities();
+        this.filiais = filiais;
+    }
+
+    public Filial getFilial() {
+        return filial;
+    }
+
+    public void setFilial(Filial filial) {
+        this.filial = filial;
+    }
+
+
 }

@@ -21,7 +21,7 @@ public class BbFilial  implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    public List<Filial> getFilial(){
+    public List<Filial> getFiliais(){
         InterfaceDAO<Filial> filialDAO = new HibernateDAO<Filial>(Filial.class, FacesContextUtil.getRequestSession());
         return filialDAO.getEntities();
     }

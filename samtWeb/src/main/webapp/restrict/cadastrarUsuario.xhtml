@@ -26,8 +26,8 @@
                         <p:inputText id="dc_senha" size="12" value="#{mbUsuario.usuario.dc_senha}" required="true" requiredMessage="O campo [senha] é obrigatório."/>
                         <h:outputLabel for="fk_filial" value="Filial: "/>
                         <p:selectOneMenu id="fk_filial" value="#{mbUsuario.usuario.filial.id_Filial}">
-                            <f:selectItems value="#{bbFilial.filial}" var="fk_filial" itemValue="#{filial.id_filial}" itemLabel="#{filial.dc_nomeFilial}"/>
-                        </p:selectOneMenu>
+                            <f:selectItems value="#{bbFilial.filiais}" var="filial" itemValue="#{filial.id_Filial}" itemLabel="#{filial.dc_nomeFilial}"/>
+                        </p:selectOneMenu> 
                         <p:panel>
                             <p:commandButton value="Salvar" action="#{mbUsuario.addUsuario}" image="ui-icon ui-icon-disk" update="@form"/>
                             <p:commandButton value="Cancelar" actionListener="#{mbUsuario.limpaUsuario}" image="ui-icon ui-icon-close" update="@form"/>

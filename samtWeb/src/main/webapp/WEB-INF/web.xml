@@ -35,13 +35,6 @@ dt. inclusão: 19/05/2015
     </context-param> 
 
     <!-- Configurações do tema do PrimeFaces -->
-<!--
-    <dependecy>
-        <groupId>org.primefaces.themes</groupId>
-        <artifactId>sam</artifactId>
-        <version>1.0.8</version>
-    </dependecy>
--->    
     <context-param>  
         <param-name>primefaces.THEME</param-name>  
         <param-value>sam</param-value>  
