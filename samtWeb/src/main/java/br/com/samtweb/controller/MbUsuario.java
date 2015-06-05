@@ -23,10 +23,10 @@ public class MbUsuario implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Usuario usuario = new Usuario();
-    private Filial filial = new Filial(); 
+//    private Filial filial = new Filial(); 
     
     private List<Usuario> usuarios;
-    private List<Filial> filiais;
+//    private List<Filial> filiais;
     
     public MbUsuario() {
     }
@@ -36,14 +36,15 @@ public class MbUsuario implements Serializable {
         return usuarioDAO;
     }
 
-    private InterfaceDAO<Filial> filialDAO() {
-        InterfaceDAO<Filial> filialDAO = new HibernateDAO<Filial>(Filial.class, FacesContextUtil.getRequestSession());
-        return filialDAO;
-    }
+//    private InterfaceDAO<Filial> filialDAO() {
+//        InterfaceDAO<Filial> filialDAO = new HibernateDAO<Filial>(Filial.class, FacesContextUtil.getRequestSession());
+//        return filialDAO;
+//    }
     
     public String limpaUsuario() {
         usuario = new Usuario();
-        filial = new Filial();
+//        filial = new Filial();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Limpar tela executada com sucesso!", ""));
         return editUsuario();
     }
 
@@ -93,22 +94,22 @@ public class MbUsuario implements Serializable {
         this.usuarios = usuarios;
     }
 
-    public List<Filial> getFiliais() {
-        return filiais;
-    }
+//    public List<Filial> getFiliais() {
+//        return filiais;
+//    }
 
-    public void setFiliais(List<Filial> filiais) {
-        filiais = filialDAO().getEntities();
-        this.filiais = filiais;
-    }
+//    public void setFiliais(List<Filial> filiais) {
+//        filiais = filialDAO().getEntities();
+//        this.filiais = filiais;
+//    }
 
-    public Filial getFilial() {
-        return filial;
-    }
+//    public Filial getFilial() {
+//        return filial;
+//    }
 
-    public void setFilial(Filial filial) {
-        this.filial = filial;
-    }
+//    public void setFilial(Filial filial) {
+//        this.filial = filial;
+//    }
 
 
 }
