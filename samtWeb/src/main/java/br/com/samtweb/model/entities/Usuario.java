@@ -4,6 +4,7 @@ package br.com.samtweb.model.entities;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -21,7 +22,7 @@ import org.hibernate.annotations.ForeignKey;
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue
     @Column(name="id_usuario", nullable=false)
@@ -35,8 +36,8 @@ public class Usuario implements Serializable {
     @ForeignKey(name = "FilialUsuario")
     @JoinColumn(name = "fk_filial", referencedColumnName="id_filial")
     private Filial filial;
-    
-    
+
+
     public Usuario() {
         this.filial = new Filial();
     }
@@ -95,5 +96,5 @@ public class Usuario implements Serializable {
         return true;
     }
 
-    
+
 }
