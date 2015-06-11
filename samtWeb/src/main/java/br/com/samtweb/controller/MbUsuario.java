@@ -1,5 +1,6 @@
 package br.com.samtweb.controller;
 
+import br.com.samtweb.conversores.ConverterSHA1;
 import br.com.samtweb.model.dao.HibernateDAO;
 import br.com.samtweb.model.dao.InterfaceDAO;
 import br.com.samtweb.model.entities.Usuario;
