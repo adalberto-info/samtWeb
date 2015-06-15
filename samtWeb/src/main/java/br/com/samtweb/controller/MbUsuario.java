@@ -37,7 +37,6 @@ public class MbUsuario implements Serializable {
     
     public String limpaUsuario() {
         usuario = new Usuario();
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Limpar tela executada com sucesso!", ""));
         return editUsuario();
     }
 
