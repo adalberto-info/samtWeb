@@ -56,7 +56,7 @@ public class Filial implements Serializable{
         this.municipio = new Municipio();
     }
 
-    public Integer getId_Filial() {
+    public Integer getId_filial() {
         return id_filial;
     }
 

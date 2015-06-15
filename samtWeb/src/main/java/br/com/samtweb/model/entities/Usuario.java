@@ -4,14 +4,12 @@ package br.com.samtweb.model.entities;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.ForeignKey;
-
 /**
  * @autor: Adalberto Kamida
  * @dt. inclusao: 15/05/2015
@@ -76,8 +74,8 @@ public class Usuario implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 17 * hash + (this.id_usuario != null ? this.id_usuario.hashCode() : 0);
+        int hash = 7;
+        hash = 47 * hash + (this.id_usuario != null ? this.id_usuario.hashCode() : 0);
         return hash;
     }
 
@@ -95,6 +93,7 @@ public class Usuario implements Serializable {
         }
         return true;
     }
+
 
 
 }
