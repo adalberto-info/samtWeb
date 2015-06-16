@@ -23,8 +23,28 @@
                             <p:inputText id="dc_nomeFilial" size="40" value="#{mbFilial.filial.dc_nomeFilial}" onkeyup="this.value = this.value.toUpperCase()"
                                          required="true" requiredMessage="O campo [Nome Filial] é obrigatório..."/>
                             
+                            <h:outputLabel for="dc_endereco" value="Endereço: "/>
+                            <p:inputText id="dc_endereco" size="40" value="#{mbFilial.filial.dc_endereco}"/> 
+                                         
+                            <h:outputLabel for="dc_enderecoNumero" value="Número: "/>
+                            <p:inputText id="dc_enderecoNumero" size="15" value="#{mbFilial.filial.dc_enderecoNumero}"/>
+                            
+                           <h:outputLabel for="dc_enderecoBairro" value="Bairro: "/>
+                           <p:inputText id="dc_enderecoBairro" size="30" value="#{mbFilial.filial.dc_enderecoBairro}"/>
+                           
+                           <h:outputLabel for="dc_telefone" value="Telefone: "/>
+                           <p:inputText id="dc_telefone" size="30" value="#{mbFilial.filial.dc_telefone}"/>
+                           
+                           <h:outputLabel for="dc_responsavel" value="Responsável: "/>
+                           <p:inputText id="dc_responsavel" size="45" value="#{mbFilial.filial.dc_responsavel}"/>
+                           
+                           <h:outputLabel for="fk_municipio" value="Município: "/> 
+                           <p:selectOneMenu id="fk_municipio" value="#{mbFilial.filial.municipio.id_municipio}" style="width:430px">
+                               <f:selectItems value="#{bbMunicipio.municipios}" var="municipio" itemValue="#{municipio.id_municipio}" itemLabel="#{municipio.dc_municipio}"/>
+                           </p:selectOneMenu> 
+                            
                             <p:panel>
-                                <p:commandButton value="Salvar" action="#{mbFilial.addFilial}" image="ui-icon ui-icon-disk" update="@form "/>
+                                <p:commandButton value="Salvar" action="#{mbFilial.addFilial}" image="ui-icon ui-icon-disk" update="@form :formtable"/>
                                 <p:commandButton value="Cancelar" actionListener="#{mbFilial.limpaFilial}" image="ui-icon ui-icon-close" update="@form"/>
                             </p:panel>
                             
@@ -32,5 +52,44 @@
                     </h:form>
                 </p:tab>
             </p:tabView>    
+            
+            <h:form id="formtable">
+                <p:growl id="msg1"/>
+                <p:dataTable id="idTabela" var="filial" value="#{mbFilial.filiais}"
+                             paginator="true" rows="10" emptyMessage="Nenhum registro encontrado"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink}
+                             {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
+                
+                    <f:facet name="header">Lista de Filiais</f:facet>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nome"/>
+                        </f:facet>
+                        <h:outputText value="#{filial.dc_nomeFilial}"/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Ações"/>
+                        </f:facet>
+                        <p:commandButton value="Editar" image="ui-icon ui-icon-pencil"
+                                process="@this" update=":tbv1:formCadFilial">
+                            <f:setPropertyActionListener target="#{mbFilial.filial}"
+                                value="#{filial}"/>
+                        </p:commandButton>
+                        <p:commandButton value="Remover" action="#{mbFilial.deleteUsuario}"
+                                image="ui-icon ui-icon-close" update="@form">
+                            <f:setPropertyActionListener target="#{mbFilial.filial}"
+                                value="#{filial}"/>
+                        </p:commandButton>
+                        
+                    </p:column>
+                    
+                </p:dataTable>
+                
+            </h:form>
+ 
+        </p:fieldset>
     </ui:define>
 </ui:composition>
