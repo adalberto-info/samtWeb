@@ -12,12 +12,13 @@
         <p:fieldset legend="Cadastrar Municípios">
         <br/>
         <p:tabView id="tbv1" dynamic="true" cache="true">
-            <p:tab title="Município" id="cadMuncipio">
+            <p:tab title="Município" id="cadMunicipio">
                 <h:form prependId="false" id="formMunicipio">
                     <p:growl id="msg0"/>
                     <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid0">
-                        <h:outputLabel/>
-                        <h:inputHidden id="id_municipio" value="#{mbMunicipio.municipio.id_municipio}"/>
+                        <h:outputLabel for="id_municipio" value="Código: "/>
+                        <h:inputText id="id_municipio" size="10" value="#{mbMunicipio.municipio.id_municipio}" required="true" 
+                                     requiredMessage="O campo [Código] é obrigatório."/>
                         
                         <h:outputLabel for="dc_municipio" value="Municipio: "/>
                         <p:inputText id="dc_municipio" size="40" value="#{mbMunicipio.municipio.dc_municipio}" onkeyup="this.value = this.value.toUpperCase()"
@@ -25,17 +26,60 @@
 
                         <h:outputLabel for="fk_uf" value="UF: "/>
                         <p:selectOneMenu id="fk_uf" value="#{mbMunicipio.municipio.uf.id_uf}" style="width:70px">
-                            <f:selectItems value="#{bbUf.ufs}" var="uf" itemValue="#{uf.if_uf}" itemLabel="#{uf.dc_sigla}"/>
+                            <f:selectItems value="#{bbUf.ufs}" var="uf" itemValue="#{uf.id_uf}" itemLabel="#{uf.dc_sigla}"/>
                         </p:selectOneMenu>
                         
                        <p:panel>
-                           <p:commandButton value="Salvar" action="#{mbMunicipio.addMunicipio()}" image="ui-icon ui-icon-disk" update="@form "/>
+                           <p:commandButton value="Salvar" action="#{mbMunicipio.addMunicipio}" image="ui-icon ui-icon-disk" update="@form :formtable"/>
                             <p:commandButton value="Cancelar" actionListener="#{mbMunicipio.limpaMunicipio}" image="ui-icon ui-icon-close" update="@form"/>
                         </p:panel>
                     </h:panelGrid>        
                 </h:form>
             </p:tab>
         </p:tabView>   
+            <h:form id="formtable">
+                <p:growl id="msg1"/>
+                <p:dataTable id="idTabela" var="municipio" value="#{mbMunicipio.municipios}"
+                             paginator="true" rows="10" emptyMessage="Nenhum registro encontrado"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink}
+                             {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
+                
+                    <f:facet name="header">Lista de Município</f:facet>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Código"/>
+                        </f:facet>
+                        <h:outputText value="#{municipio.id_municipio}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nome"/>
+                        </f:facet>
+                        <h:outputText value="#{municipio.dc_municipio}"/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Ações"/>
+                        </f:facet>
+                        <p:commandButton value="Editar" image="ui-icon ui-icon-pencil"
+                                process="@this" update=":tbv1:formMunicipio">
+                            <f:setPropertyActionListener target="#{mbMunicipio.municipio}"
+                                value="#{municipio}"/>
+                        </p:commandButton>
+                        <p:commandButton value="Remover" action="#{mbMunicipio.deleteMunicipio}"
+                                image="ui-icon ui-icon-close" update="@form">
+                            <f:setPropertyActionListener target="#{mbMunicipio.municipio}"
+                                value="#{municipio}"/>
+                        </p:commandButton>
+                        
+                    </p:column>
+                    
+                </p:dataTable>
+                
+            </h:form>
         </p:fieldset>              
     </ui:define>
 

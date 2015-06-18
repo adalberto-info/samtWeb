@@ -26,7 +26,7 @@ public class Municipio implements Serializable{
     private static final long serialVersionUID = 1L;
     
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     @Column(name="id_municipio", nullable=false)
     private Integer id_municipio;
     @Column(name="dc_municipio", length= 40, nullable=false)
