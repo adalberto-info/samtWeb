@@ -75,7 +75,7 @@ public class MbMunicipio implements Serializable {
         return municipio;
     }
     
-    public void setMuncipio(Municipio municipio){
+    public void setMunicipio(Municipio municipio){
         this.municipio = municipio;
     } 
     
