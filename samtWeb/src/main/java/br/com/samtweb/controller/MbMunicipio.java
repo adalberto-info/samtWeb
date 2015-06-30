@@ -17,6 +17,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 
 @ManagedBean(name="mbMunicipio")
@@ -47,7 +49,12 @@ public class MbMunicipio implements Serializable {
     }
     
     public String addMunicipio(){
-        if (municipio.getId_municipio() == null || municipio.getId_municipio() == 0){
+        Integer VLN_id_municipio ;
+        VLN_id_municipio = municipio.getId_municipio();
+
+        Municipio municipioPesquisa = findMunicipio(VLN_id_municipio);
+
+        if (municipioPesquisa.getId_municipio() == null || municipioPesquisa.getId_municipio() == 0){
             insertMunicipio();
         } else{
             updateMunicipio();
@@ -88,4 +95,13 @@ public class MbMunicipio implements Serializable {
     public void setMunicipios(List<Municipio> municipios){
         this.municipios = municipios;
     }
+ 
+    public Municipio findMunicipio(Integer id_municipio) {
+        String stringQuery = "from Municipio municipio where municipio.id_municipio = "+ id_municipio;
+        Session session = FacesContextUtil.getRequestSession();
+        Query query = session.createQuery(stringQuery);
+        return (Municipio) query.uniqueResult();
+    }
+
+    
 }

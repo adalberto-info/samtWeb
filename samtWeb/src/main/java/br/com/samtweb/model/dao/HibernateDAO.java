@@ -3,9 +3,13 @@ package br.com.samtweb.model.dao;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
-
+import javax.persistence.criteria.CriteriaQuery;
+ 
 /**
  * @autor: Adalberto Kamida
  * @dt. inclusao: 13/05/2015
@@ -16,7 +20,7 @@ public class HibernateDAO<T> implements InterfaceDAO<T>, Serializable {
     
     private Class<T> classe;
     private Session session;
-
+    
     public HibernateDAO(Class<T> classe, Session session) {
         super();
         this.classe = classe;
@@ -64,6 +68,5 @@ public class HibernateDAO<T> implements InterfaceDAO<T>, Serializable {
         List<T> entities = (List<T>) session.createCriteria(classe).list();
         return entities;
     }
-
 
 }
