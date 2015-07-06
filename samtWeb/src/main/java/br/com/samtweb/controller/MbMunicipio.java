@@ -53,8 +53,8 @@ public class MbMunicipio implements Serializable {
         VLN_id_municipio = municipio.getId_municipio();
 
         Municipio municipioPesquisa = findMunicipio(VLN_id_municipio);
-
-        if (municipioPesquisa.getId_municipio() == null || municipioPesquisa.getId_municipio() == 0){
+        
+        if (municipioPesquisa == null || municipioPesquisa.getId_municipio() == 0){
             insertMunicipio();
         } else{
             updateMunicipio();
@@ -69,7 +69,7 @@ public class MbMunicipio implements Serializable {
     }
     
     private void updateMunicipio(){
-        municipioDAO().update(municipio);
+        municipioDAO().merge(municipio);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualização efetuada com sucesso!",""));
     }
 
