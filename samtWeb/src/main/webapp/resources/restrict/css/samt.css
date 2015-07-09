@@ -24,7 +24,7 @@ body {
    width:238px;
    height:34px;
    margin:40px 0 0 0;
-
+   color: brown;
 }
 
 #logotipo{
@@ -43,7 +43,6 @@ body {
    margin-top: 15px;
    margin-right: 30px;
    text-align: right;
-   color: #FF0000
 }
 
 #user{
