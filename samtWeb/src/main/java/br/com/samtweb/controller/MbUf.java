@@ -20,7 +20,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 
-@ManagedBean("MbUf")
+@ManagedBean(name="mbUf")
 @SessionScoped
 public class MbUf implements Serializable {
 
@@ -28,7 +28,7 @@ public class MbUf implements Serializable {
     
     private Uf uf = new Uf();
     
-    private List<Uf> Ufs;
+    private List<Uf> ufs;
     
     public MbUf(){
     }
@@ -53,9 +53,42 @@ public class MbUf implements Serializable {
         }else{
             updateUf();
         }
+        limpaUf();
+        return null;
     }
     
-    public 
+    public void insertUf(){
+        ufDAO().save(uf);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Gravação efetuada com sucesso!", ""));
+    }
     
+
+    public void updateUf(){
+        ufDAO().update(uf);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualização efetuada com sucesso!", ""));
+    }
+    
+    public void deleteUf(){
+        ufDAO().remove(uf);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro excluído com sucesso!", ""));
+    }
+
+    public Uf getUf(){
+        return uf;
+    }
+
+    public void setUf(Uf uf){
+        this.uf = uf;
+    }
+
+    public List<Uf> getUfs(){
+        ufs = ufDAO().getEntities();
+        return ufs;
+    }
+    
+    
+    public void setUfs(List<Uf> ufs){
+        this.ufs = ufs;
+    }
     
 }

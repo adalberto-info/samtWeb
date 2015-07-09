@@ -11,7 +11,7 @@
     <ui:define name="tarefas">
         <h:form>
             <p:growl id="msg0"/>
-            <p:dataTable id="idTabela" var="UF" value="#{mbUf.ufs}"
+            <p:dataTable id="idTabela" var="uf" value="#{mbUf.ufs}"
                          paginator="true" rows="10" emptyMessage="Nenhum registro encontrado"
                          paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink}
                          {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -36,9 +36,7 @@
                         </f:facet>
                         <h:outputText value="#{uf.dc_descricao}"/>
                     </p:column>
-
-            </p:growl>
-
+            </p:dataTable>
         </h:form>
     </ui:define>
 
