@@ -22,6 +22,7 @@ public class MbUsuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    private String dc_confirmaSenha;
     private Usuario usuario = new Usuario();
     
     private List<Usuario> usuarios;
@@ -55,8 +56,12 @@ public class MbUsuario implements Serializable {
     }
 
     private void insertUsuario() {
-        usuarioDAO().save(usuario);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Gravação efetuada com sucesso!", ""));
+        if (comparaSenhas()==true){
+            usuarioDAO().save(usuario);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Gravação efetuada com sucesso!", ""));
+        }else{
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Senhas não conferem!", ""));
+        }    
     }
 
     private void updateUsuario() {
@@ -86,5 +91,26 @@ public class MbUsuario implements Serializable {
         this.usuarios = usuarios;
     }
 
+    public String getDc_confirmaSenha(){
+        return this.dc_confirmaSenha;
+    }
+    
+    public void setDc_confirmaSenha(String dc_confirmaSenha){
+        this.dc_confirmaSenha = dc_confirmaSenha;
+    }
 
+    private boolean comparaSenhas() {
+        
+        boolean vll_retorno;
+        vll_retorno = true;
+        
+        if (usuario.getDc_senha().equals(ConverterSHA1.cipher(this.dc_confirmaSenha))){
+            vll_retorno = true;
+        }else{
+            vll_retorno = false;
+        }
+        
+        return vll_retorno;
+        
+    }
 }
