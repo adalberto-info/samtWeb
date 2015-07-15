@@ -56,6 +56,9 @@ public class MbUsuario implements Serializable {
     }
 
     private void insertUsuario() {
+        usuario.setDc_senha(ConverterSHA1.cipher(usuario.getDc_senha()));
+        this.setDc_confirmaSenha(ConverterSHA1.cipher(this.getDc_confirmaSenha()));
+        
         if (comparaSenhas()==true){
             usuarioDAO().save(usuario);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Gravação efetuada com sucesso!", ""));
@@ -103,13 +106,13 @@ public class MbUsuario implements Serializable {
         
         boolean vll_retorno;
         vll_retorno = true;
-        
-        if (usuario.getDc_senha().equals(ConverterSHA1.cipher(this.dc_confirmaSenha))){
+
+        if (usuario.getDc_senha().equals(this.dc_confirmaSenha)){
             vll_retorno = true;
         }else{
             vll_retorno = false;
         }
-        
+            
         return vll_retorno;
         
     }

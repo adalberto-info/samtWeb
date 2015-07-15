@@ -27,7 +27,7 @@
                                     weakLabel="Senha Fraca" goodLabel="Senha Boa" strongLabel="Senha Forte" feedback="true"/> 
                         <h:outputLabel for="dc_confirmaSenha" value="Confirmar senha:"/>
                         <p:password id="dc_confirmaSenha" size="12" promptLabel="Confirme a senha" value="#{mbUsuario.dc_confirmaSenha}" required="true" requiredMessage="O campo [confirma Senha] é obrigatório."
-                                    weakLabel="Senha Fraca" goodLabel="Senha Boa" strongLabel="Senha Forte" feedback="true" validator="passwordValidator" converter="ConverterSHA1"/>                
+                                    weakLabel="Senha Fraca" goodLabel="Senha Boa" strongLabel="Senha Forte" feedback="true" validator="passwordValidator" />                
                         <h:outputLabel for="fk_filial" value="Filial: "/>
                         <p:selectOneMenu id="fk_filial" value="#{mbUsuario.usuario.filial.id_filial}" style="width:200px">
                             <f:selectItems value="#{bbFilial.filiais}" var="filial" itemValue="#{filial.id_filial}" itemLabel="#{filial.dc_nomeFilial}"/>

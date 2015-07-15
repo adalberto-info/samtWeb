@@ -27,7 +27,7 @@ public class Usuario implements Serializable {
     private Integer id_usuario;
     @Column(name="dc_nomeUsuario", nullable=false, length=40)
     private String dc_nomeUsuario;
-    @Column(name="dc_senha", nullable=false, length=12)
+    @Column(name="dc_senha", nullable=false, length=16)
     private String dc_senha;
 
     @ManyToOne(optional=false)
