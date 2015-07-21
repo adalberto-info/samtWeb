@@ -4,6 +4,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -48,7 +49,7 @@ public class ConverterSHA1 implements Converter{
     public static String criptografa(String PLC_texto_origem)
     {
         String VLC_retorno = ""; 
-        String VLC_letra = "";
+        char VLC_caracter;
         int VLN_codigo_asc = 0;
         int VLN_i = 0; 
         
@@ -58,12 +59,11 @@ public class ConverterSHA1 implements Converter{
         }
         for (VLN_i = 0; VLN_i < PLC_texto_origem.length() ; VLN_i ++ )
         {
-            VLN_codigo_asc = (int)PLC_texto_origem.charAt(VLN_i) + 30 ;     
-            if (VLN_codigo_asc > 255)
-            {
-                VLN_codigo_asc = VLN_codigo_asc - 255; 
-            }
-            VLC_retorno += (char)VLN_codigo_asc;     
+
+            VLN_codigo_asc = PLC_texto_origem.charAt(VLN_i) - 15 ;     
+            VLC_caracter = (char)VLN_codigo_asc;
+            VLC_retorno += Character.toString(VLC_caracter);     
+
         }
         
         return VLC_retorno;
@@ -72,6 +72,7 @@ public class ConverterSHA1 implements Converter{
     public static String descriptografa(String PLC_texto_origem)
     {
         String VLC_retorno = ""; 
+        char VLC_caracter;
         int VLN_i = 0; 
         int VLN_codigo_asc = 0; 
         
@@ -82,16 +83,9 @@ public class ConverterSHA1 implements Converter{
         
         for (VLN_i = 0; VLN_i < PLC_texto_origem.length(); VLN_i ++)
         {
-            VLN_codigo_asc = (int)PLC_texto_origem.charAt(VLN_i);
-            if (VLN_codigo_asc < 30)
-                {
-                   VLN_codigo_asc = VLN_codigo_asc+255-30;
-                }
-            else
-                {
-                   VLN_codigo_asc = VLN_codigo_asc-30;
-                }
-            VLC_retorno += (char)VLN_codigo_asc; 
+            VLN_codigo_asc = PLC_texto_origem.charAt(VLN_i)+15;
+            VLC_caracter = (char)VLN_codigo_asc;
+            VLC_retorno += Character.toString(VLC_caracter); 
         }
         return VLC_retorno;
     }
