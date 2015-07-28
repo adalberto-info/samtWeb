@@ -24,9 +24,9 @@ dt. inclusão: 22/07/2015
     </http>                
 
     <!-- NO PROJETO SAMT PADRÃO FIZEMOS DESSA FORMA -->  
+
     <authentication-manager>
         <authentication-provider>
-<!--            <password-encoder hash="sha"/> -->
             <password-encoder hash="plaintext"/>  
             <jdbc-user-service data-source-ref="dataSource"
                                users-by-username-query="SELECT dc_nomeUsuario as username, dc_senha as password, 'true' as enable FROM usuario WHERE dc_nomeUsuario=?"
@@ -40,6 +40,8 @@ dt. inclusão: 22/07/2015
         <b:property name="username" value="root" />
         <b:property name="password" value="teste" />
     </b:bean>
+
+
     <!-- MAS EXISTEM OUTRAS 2 FORMAS DE SE FAZER ISSO -->
     <!-- VOCÊ PODE CUSTOMIZAR A AUTENTICATION PROVIDER -->
     <!--    <b:bean id="customAuthenticationProvider" class="br.com.semeru.security.CustomAuthenticationProvider"></b:bean> 
@@ -55,5 +57,16 @@ dt. inclusão: 22/07/2015
         </authentication-provider>
     </authentication-manager>
 
-    <b:bean id="semeruUserService" class="br.com.semeru.security.UserServiceImpl"/>-->
+    <b:bean id="samtUserService" class="br.com.samt.security.UserServiceImpl"/>-->
+
+<!--
+    <b:bean id="encoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder"/>
+    <authentication-manager>
+        <authentication-provider user-service-ref="descriptografa" >
+            <password-encoder hash="plaintext"/>
+        </authentication-provider>
+    </authentication-manager>
+
+    <b:bean id="descriptografa" class="br.com.samtweb.conversores.ConverterSHA1"/>
+-->
 </b:beans>    
