@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/restrict/css/samt.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/restrict/images/Info.ico" rel="shortcut icon" type="image/x-icon" />
+        <title>Acesso Negado</title>
+    </h:head>
+    <body>
+ 
+        <div id="topo">
+            <div id="logotipo"></div>
+            
+            <div id="logoff">
+  
+            </div>  
+        </div>       
+       
+        <div id="conteudo" title="Área Restrita">
+            <h:form>
+                <p:growl id="msg" rendered="#{param.erro}">#{msgs.erro_message}</p:growl>
+            </h:form>
+        
+            <p:dialog header="Área Restrita"
+                      id="dialog"  
+                      modal="true"
+                      minWidth="335"
+                      width="335"
+                      closable="false"
+                      position="center"
+                      widgetVar="modalAcessoNegado"
+                      showEffect="slide" 
+                      draggable="false"
+                      resizable="false"
+                      visible="true">
+
+                <form method="post" id="acessoNegado">
+                    <h:panelGrid columns="1" cellpadding="3">
+                        <h:outputLabel for="mensagem" value="Login/Senha inválidos... " /> 
+                        <h:commandButton value="Voltar" action="/login.faces"/>
+                   </h:panelGrid>
+                </form>
+            </p:dialog>  
+        </div>
+    </body>
+</html>
