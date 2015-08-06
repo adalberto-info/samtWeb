@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- autor: Adalberto Kamida  dt.criação: 06/08/2015  -->
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./../resources/templateMaster.xhtml">
+
+    <ui:define name="tarefas">
+        <p:fieldset legend="Digitação de Placas">
+            <br/>
+            <h:form  prependId="false" id="formDigitacaoPlacas">
+                <p:layout style="min-width:400px;min-height:200px;">
+                    <p:layoutUnit position="west" resizable="true" size="400" minSize="400" maxSize="600">
+                        <p:growl id="msg0"/>
+                        <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid0">
+                            <h:outputLabel for="dc_numeroAit" value="Nr. AIT: "/>
+                            <p:inputText id="dc_numeroAit" size="10" value="9999999999"/>
+                            <p:panel>
+                                <p:commandButton value="Salvar" image="ui-icon ui-icon-disk"/>
+                                <p:commandButton value="Cancelar" image="ui-icon ui-icon-close"/>
+                            </p:panel>
+                        </h:panelGrid>    
+                    </p:layoutUnit>
+ 
+                    <p:layoutUnit position="center">
+                        Imagem
+                    </p:layoutUnit>
+                </p:layout>
+            </h:form>
+        </p:fieldset>
+    </ui:define>
+
+</ui:composition>
+
