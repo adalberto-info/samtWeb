@@ -56,8 +56,8 @@ public class MbUsuario implements Serializable {
     }
 
     private void insertUsuario() {
-        usuario.setDc_senha(ConverterSHA1.criptografa(usuario.getDc_senha()));
-        this.setDc_confirmaSenha(ConverterSHA1.criptografa(this.getDc_confirmaSenha()));
+    //    usuario.setDc_senha(ConverterSHA1.criptografa(usuario.getDc_senha()));
+    //    this.setDc_confirmaSenha(ConverterSHA1.criptografa(this.getDc_confirmaSenha()));
         
         if (comparaSenhas()==true){
             usuarioDAO().save(usuario);
@@ -69,8 +69,8 @@ public class MbUsuario implements Serializable {
 
     private void updateUsuario() {
         
-        usuario.setDc_senha(ConverterSHA1.criptografa(usuario.getDc_senha()));
-        this.setDc_confirmaSenha(ConverterSHA1.criptografa(this.getDc_confirmaSenha()));
+    //    usuario.setDc_senha(ConverterSHA1.criptografa(usuario.getDc_senha()));
+    //    this.setDc_confirmaSenha(ConverterSHA1.criptografa(this.getDc_confirmaSenha()));
         usuarioDAO().update(usuario);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualização efetuada com sucesso!", ""));
     }
