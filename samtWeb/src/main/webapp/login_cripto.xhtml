@@ -4,8 +4,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:sec="http://www.springframework.org/security/facelets/tags">
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -42,13 +41,13 @@
                       visible="true">
 
 
-                <form action="j_spring_security_check" method="post" id="login">
+                <form partialSubmit="false" id="login">
                     <h:panelGrid columns="2" cellpadding="3">
                         <h:outputLabel for="j_username" value="Usuário: " /> 
-                        <h:inputText id="j_username" required="true"/>
+                        <h:inputText id="j_username" value="#{mbLogin.dc_nomeUsuario}" required="true"/>
                         <h:outputLabel for="j_password" value="Senha: " />
-                        <h:inputSecret id="j_password" required="true"/>
-                        <h:commandButton value="Acessar"/>
+                        <h:inputSecret id="j_password" value="#{mbLogin.dc_senha}" required="true"/>
+                        <h:commandButton actionListener="#{mbLogin.login}" value="Acessar"/>
                    </h:panelGrid>
                 </form>
             </p:dialog>  
@@ -66,4 +65,3 @@
 
     </h:body>
 </html>
-
