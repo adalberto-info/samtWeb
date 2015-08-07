@@ -87,7 +87,7 @@ body {
 }
 
 #tarefas{
-   width:1260px;
+   width:1260px;  
    min-height: 642px;
    margin:3px;
    padding: 2px;
@@ -101,7 +101,7 @@ fieldset {
 	margin-top:6px;
 	border:1px dashed #CCC;
 	padding:0;
-	width:1190px;
+	width:1190px; 
 }
 
 .form {	margin:0;

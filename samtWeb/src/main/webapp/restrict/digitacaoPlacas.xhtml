@@ -13,22 +13,30 @@
         <p:fieldset legend="Digitação de Placas">
             <br/>
             <h:form  prependId="false" id="formDigitacaoPlacas">
-                <p:layout style="min-width:400px;min-height:200px;">
-                    <p:layoutUnit position="west" resizable="true" size="400" minSize="400" maxSize="600">
+                <p:layout style="min-width:1000px;min-height:400px;">
+                    <p:layoutUnit position="west" resizable="true" size="450" minSize="450" maxSize="450">
                         <p:growl id="msg0"/>
                         <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid0">
                             <h:outputLabel for="dc_numeroAit" value="Nr. AIT: "/>
                             <p:inputText id="dc_numeroAit" size="10" value="9999999999"/>
-                            <p:panel>
-                                <p:commandButton value="Salvar" image="ui-icon ui-icon-disk"/>
-                                <p:commandButton value="Cancelar" image="ui-icon ui-icon-close"/>
-                            </p:panel>
-                        </h:panelGrid>    
+                        </h:panelGrid>   
+                        <br/>
+                        <p:panel>
+                            <p:commandButton value="Proximo" image="ui-icon-arrowthick-1-e"/>
+                            <p:commandButton value="Anterior" image="ui-icon-arrowthick-1-w"/>
+                            <p:commandButton value="Panorâmica" image="ui-icon-image"/>
+                            <p:commandButton value="Obliterar" image="ui-icon-bookmark"/>
+                        </p:panel>
                     </p:layoutUnit>
  
-                    <p:layoutUnit position="center">
+                    <p:layoutUnit position="center" resizable="true" size="600" minSize="400" maxSize="600">
                         Imagem
                     </p:layoutUnit>
+
+                    <p:layoutUnit position="east" resizable="true" size="200" minSize="200" maxSize="200">
+                        Motivo Inconsistência
+                    </p:layoutUnit>
+
                 </p:layout>
             </h:form>
         </p:fieldset>
