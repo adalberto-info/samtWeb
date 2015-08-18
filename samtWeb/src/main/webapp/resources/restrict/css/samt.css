@@ -323,7 +323,7 @@ background:transparent;
    color:#666666
 }
 
-/* Tela de compras*/
+/* Tela de digitação de placas*/
 
 .fontdescricao{
  font:bold 1.1em/1.3em Arial, 'Lucida Grande', 'Lucida Sans', Verdana, Sans-Serif; color:black;   
@@ -399,24 +399,28 @@ margin-right: 5px;
 }
 
 
-
-.buttonnew{  
+.botao{  
+width: 87px !important;
+height:30px !important;
+margin: 1px !important;
+font-size: 10px !important;
+color: blue !important;
+}
+.btn_anterior{  
 width: 20px;
 height: 20px;
-background-image: url('../images/add.png') !important;
-}
-.buttonrealizeatendiment{  
-width: 20px;
-height: 20px;
-background-image: url('../images/check.png') !important;
 }
 
-.buttonfindclient{  
+.btn_obliterar{  
 width: 20px;
 height: 20px;
-background-image: url('../images/find-client.png') !important;
 }
 
+.btn_panoramica{  
+width: 20px;
+height: 20px;
+
+}
 
 .letramensagem{
     font-size:18px;

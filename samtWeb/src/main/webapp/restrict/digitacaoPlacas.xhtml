@@ -14,34 +14,33 @@
             <br/>
             <h:form  prependId="false" id="formDigitacaoPlacas">
                 <p:layout style="min-width:1000px;min-height:400px;margin-bottom:5px">
-                    <p:layoutUnit position="west" resizable="true" size="400" minSize="300" maxSize="400" style="border-width: 2px">
+                    <p:layoutUnit position="west" size="600" style="border-width: 2px">
                         <p:growl id="msg0"/>
-                        <h:panelGrid style="margin-top:5px" id="grid0">
-                            <f:facet name="header">
-                                <p:row>
-                                    <p:column colspan="4">Dados da Infração</p:column>
-                                </p:row>
-                            </f:facet>
-                            <p:row>
-                                <p:column colspan="4">Identificação</p:column>
-                            </p:row>
-                            <p:row>
-                                <p:column colspan="2"><h:inputText id="nr_codLocal" size="4" value="9999"/></p:column>
-                                <p:column colspan="2"><h:inputText id="dc_numeroAit" size="10" value="9999999999"/></p:column>
-                            </p:row>
-                            <p:row>
-                                <p:column colspan="4">Local</p:column>
-                            </p:row>
-                            <p:row>
-                                <p:column colspan="4"><h:inputTextarea rows="3" cols="47" id="dc_local" /></p:column>
-                            </p:row>
+                        <h:panelGrid columns="4" cellpadding="10" styleClass="panelGrid" id="grid0">
+                            <h:outputLabel for="dc_dadosInfracao" value="Dados da Infração"/>
+                            <h:outputLabel/>
+                            <h:outputLabel/>
+                            <h:outputLabel/>
+                            <h:outputLabel for="dc_identificacao" value="Identificação"/>
+                            <h:outputLabel/>
+                            <h:outputLabel/>
+                            <h:outputLabel/>
+                            <h:inputText id="nr_codLocal"/>
+                            <h:inputText id="dc_numeroAit"/>
+                            <h:outputLabel/>
+                            <h:outputLabel/>
+                            <h:outputLabel for="dc_local" value="Local"/>
+                            <h:outputLabel/>
+                            <h:outputLabel/>
+                            <h:outputLabel/>
+                            <h:inputTextarea rows="3" id="dc_local"/>
                         </h:panelGrid>   
                         <br/>
                         <p:panel>
-                            <p:commandButton value="Proximo" image="ui-icon-arrowthick-1-e" />
-                            <p:commandButton value="Anterior" image="ui-icon-arrowthick-1-w" iconPos="right"/>
-                            <p:commandButton value="Panorâmica" image="ui-icon-image"/>
-                            <p:commandButton value="Obliterar" image="ui-icon-bookmark"/>
+                            <p:commandButton value="Proximo" image="ui-icon-arrowthick-1-e" id="btn_proximo" styleClass="botao"/>
+                            <p:commandButton value="Anterior" image="ui-icon-arrowthick-1-w" iconPos="right" id="btn_anterior" styleClass="botao"/>
+                            <p:commandButton value="Panorâmica" image="ui-icon-image" id="btn_panoramica" styleClass="botao"/>
+                            <p:commandButton value="Obliterar" image="ui-icon-bookmark" id="btn_obliterar" styleClass="botao"/>
                         </p:panel>
                     </p:layoutUnit>
  
