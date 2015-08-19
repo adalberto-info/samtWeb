@@ -14,29 +14,57 @@
             <br/>
             <h:form  prependId="false" id="formDigitacaoPlacas">
                 <p:layout style="min-width:1000px;min-height:400px;margin-bottom:5px">
-                    <p:layoutUnit position="west" size="600" style="border-width: 2px">
+                    <p:layoutUnit position="west" size="400" style="border-width: 2px">
                         <p:growl id="msg0"/>
-                        <h:panelGrid columns="4" cellpadding="10" styleClass="panelGrid" id="grid0">
-                            <h:outputLabel for="dc_dadosInfracao" value="Dados da Infração"/>
-                            <h:outputLabel/>
-                            <h:outputLabel/>
-                            <h:outputLabel/>
-                            <h:outputLabel for="dc_identificacao" value="Identificação"/>
-                            <h:outputLabel/>
-                            <h:outputLabel/>
-                            <h:outputLabel/>
-                            <h:inputText id="nr_codLocal"/>
-                            <h:inputText id="dc_numeroAit"/>
-                            <h:outputLabel/>
-                            <h:outputLabel/>
-                            <h:outputLabel for="dc_local" value="Local"/>
-                            <h:outputLabel/>
-                            <h:outputLabel/>
-                            <h:outputLabel/>
-                            <h:inputTextarea rows="3" id="dc_local"/>
+                        <h:panelGrid columns="1" width="100%">    
+                            <h:outputText value="Dados da Infração"/>
+                            <h:outputText value="Identificação"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2">
+                            <h:inputText id="nr_codLocal" size="4"/>
+                            <h:inputText id="dc_numeroAit" size="10"/>
                         </h:panelGrid>   
-                        <br/>
-                        <p:panel>
+                        <h:panelGrid columns="1">
+                            <h:outputText value="Local"/>
+                            <h:inputTextarea rows="2" cols="48" id="dc_local"/>
+                        </h:panelGrid> 
+                        <h:panelGrid columns="4">
+                            <h:outputText value="Data"/>
+                            <h:inputText id="dt_dataInfracao" size="10"/>
+                            <h:outputText value="Vel. Permitida"/>
+                            <h:inputText id="nr_velPermitida" size="5"/>
+                            <h:outputText value="Hora"/>
+                            <h:inputText id="hr_horaInfracao" size="10"/>
+                            <h:outputText value="Vel. Medida"/>
+                            <h:inputText id="nr_velocidadeRegistrada" size="5"/>
+                            <h:outputText value="Faixa"/>
+                            <h:inputText id="nr_faixa" size="2"/>
+                            <h:outputText value="Vel. Considerada"/>
+                            <h:inputText id="nr_velocidadeConsiderada" size="5"/>
+                        </h:panelGrid> 
+                        <h:panelGrid columns="2">
+                            <h:outputText value="Placa"/>
+                            <h:outputText value="Enquadramento"/>
+                            <h:inputText id="dc_placa" size="10"/>
+                            <h:inputText id="fk_enquadramento" size="10"/>
+                            <h:outputText value="Cor"/>
+                            <h:outputText value="Categoria"/>
+                            <h:inputText id="dc_cor" size="15"/>
+                            <h:inputText id="dc_categoria" size="30"/>             
+                        </h:panelGrid>
+                        <h:panelGrid columns="3">
+                            <h:outputText value="Espécie"/>
+                            <h:outputText value="Tipo"/>
+                            <h:outputText value="Ano"/>
+                            <h:inputText id="dc_especie" size="15"/>
+                            <h:inputText id="dc_tipo" size="20"/>
+                            <h:inputText id="nr_anoModelo" size="4"/>
+                            
+                            
+                        </h:panelGrid>
+                        
+                       <br/> 
+                       <p:panel>
                             <p:commandButton value="Proximo" image="ui-icon-arrowthick-1-e" id="btn_proximo" styleClass="botao"/>
                             <p:commandButton value="Anterior" image="ui-icon-arrowthick-1-w" iconPos="right" id="btn_anterior" styleClass="botao"/>
                             <p:commandButton value="Panorâmica" image="ui-icon-image" id="btn_panoramica" styleClass="botao"/>
