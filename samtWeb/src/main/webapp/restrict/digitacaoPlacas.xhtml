@@ -10,13 +10,12 @@
                 template="./../resources/templateMaster.xhtml">
 
     <ui:define name="tarefas">
-        <p:fieldset legend="Digitação de Placas">
-            <br/>
+        <p:fieldset legend="Digitação de Placas" style="height: 720px">
             <h:form  prependId="false" id="formDigitacaoPlacas">
-                <p:layout style="min-width:1000px;min-height:400px;margin-bottom:5px">
+                <p:layout style="min-width:1000px;min-height:400px">
                     <p:layoutUnit position="west" size="400" style="border-width: 2px">
                         <p:growl id="msg0"/>
-                        <h:panelGrid columns="1" width="100%">    
+                        <h:panelGrid columns="1">    
                             <h:outputText value="Dados da Infração"/>
                             <h:outputText value="Identificação"/>
                         </h:panelGrid>
@@ -59,24 +58,71 @@
                             <h:inputText id="dc_especie" size="15"/>
                             <h:inputText id="dc_tipo" size="20"/>
                             <h:inputText id="nr_anoModelo" size="4"/>
-                            
-                            
                         </h:panelGrid>
-                        
-                       <br/> 
+                        <h:panelGrid columns="1">
+                            <h:outputText value="Marca/Modelo"/>
+                            <h:inputText id="dc_marca" size="35"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2">
+                            <h:outputText value="Município"/>
+                            <h:outputText value="UF"/>
+                            <h:inputText id="dc_municipio" size="40"/>
+                            <h:inputText id="dc_uf" size="2"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1">
+                            <h:outputText value="País"/>
+                            <p:selectOneMenu id="fk_paisVeiculo">
+                                <f:selectItem itemLabel="Selecione o país" itemValue=""/>
+                                <f:selectItem itemLabel="Argentina" itemValue="10"/>
+                                <f:selectItem itemLabel="Bolívia" itemValue="11"/>
+                                <f:selectItem itemLabel="Guiana" itemValue="20"/>
+                                <f:selectItem itemLabel="Chile" itemValue="30"/>
+                                <f:selectItem itemLabel="Venezuela" itemValue="40"/>
+                                <f:selectItem itemLabel="Paraguai" itemValue="60"/>
+                                <f:selectItem itemLabel="Uruguai" itemValue="80"/>
+                                <f:selectItem itemLabel="Mexico" itemValue="90"/>
+                                <f:selectItem itemLabel="Estados Unidos da América" itemValue="91"/>
+                                <f:selectItem itemLabel="Canada" itemValue="92"/>
+                                <f:selectItem itemLabel="Outros" itemValue="99"/>
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                        <h:outputText value="Isento Rodízio por Decreto"/>
+                        <h:panelGrid columns="2">
+                            <h:inputText id="fk_veiculoIsentoRodizio" size="3"/>
+                            <p:selectOneMenu id="nr_veiculoIsentoRodizio">
+                                <f:selectItem itemLabel="Selecione tipo isenção" itemValue="000"/>
+                                <f:selectItem itemLabel="Transporte coletivo e de lotação" itemValue="001"/>
+                                <f:selectItem itemLabel="Motocicleta ou similar" itemValue="002"/>
+                                <f:selectItem itemLabel="Taxi" itemValue="003"/>
+                                <f:selectItem itemLabel="Transporte escolar" itemValue="004"/>
+                                <f:selectItem itemLabel="Guincho" itemValue="005"/>
+                                <f:selectItem itemLabel="Ambulância" itemValue="006"/>
+                                <f:selectItem itemLabel="Polícia, corpo Bombeiro,Defesa Civil e Militar"/>
+                                <f:selectItem itemLabel="Funeral, água, luz, telefone, gás e trânsito"/>
+                                <f:selectItem itemLabel="Coleta de lixo e correios"/>
+                                <f:selectItem itemLabel="Transporte combustível e insumos hospitalares"/>
+                                <f:selectItem itemLabel="Transporte sangue, derivado, transplante, materi"/>
+                                <f:selectItem itemLabel="Transporte material saúde pública"/>
+                                <f:selectItem itemLabel="Transporte combústivel aeronaútico e ferroviário"/>
+                                <f:selectItem itemLabel="Transporte e segurança de valores"/>
+                                <f:selectItem itemLabel="Órgão de imprensa"/>
+                                <f:selectItem itemLabel="Portadores de deficiência"/>
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                    </p:layoutUnit>
+                    <p:layoutUnit position="center" size="600" minSize="400" maxSize="600" style="border-width: 2px">
+                        Imagem
+                      <br/> 
                        <p:panel>
                             <p:commandButton value="Proximo" image="ui-icon-arrowthick-1-e" id="btn_proximo" styleClass="botao"/>
                             <p:commandButton value="Anterior" image="ui-icon-arrowthick-1-w" iconPos="right" id="btn_anterior" styleClass="botao"/>
                             <p:commandButton value="Panorâmica" image="ui-icon-image" id="btn_panoramica" styleClass="botao"/>
                             <p:commandButton value="Obliterar" image="ui-icon-bookmark" id="btn_obliterar" styleClass="botao"/>
                         </p:panel>
-                    </p:layoutUnit>
- 
-                    <p:layoutUnit position="center" resizable="true" size="600" minSize="400" maxSize="600" style="border-width: 2px">
-                        Imagem
+
                     </p:layoutUnit>
 
-                    <p:layoutUnit position="east" resizable="true" size="200" minSize="200" maxSize="200" style="border-width: 2px">
+                    <p:layoutUnit position="east" size="200" minSize="200" maxSize="200" style="border-width: 2px">
                         Motivo Inconsistência
                     </p:layoutUnit>
 
