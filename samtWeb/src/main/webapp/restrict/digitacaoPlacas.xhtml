@@ -10,10 +10,10 @@
                 template="./../resources/templateMaster.xhtml">
 
     <ui:define name="tarefas">
-        <p:fieldset legend="Digitação de Placas" style="height: 720px">
+        <p:fieldset legend="Digitação de Placas" style="height: 650px">
             <h:form  prependId="false" id="formDigitacaoPlacas">
                 <p:layout style="min-width:1000px;min-height:400px">
-                    <p:layoutUnit position="west" size="400" style="border-width: 2px">
+                    <p:layoutUnit position="west" size="400" style="border-width: 2px;">
                         <p:growl id="msg0"/>
                         <h:panelGrid columns="1">    
                             <h:outputText value="Dados da Infração"/>
@@ -71,7 +71,7 @@
                         </h:panelGrid>
                         <h:panelGrid columns="1">
                             <h:outputText value="País"/>
-                            <p:selectOneMenu id="fk_paisVeiculo">
+                            <p:selectOneMenu id="fk_paisVeiculo" styleClass="lista">
                                 <f:selectItem itemLabel="Selecione o país" itemValue=""/>
                                 <f:selectItem itemLabel="Argentina" itemValue="10"/>
                                 <f:selectItem itemLabel="Bolívia" itemValue="11"/>
@@ -89,7 +89,7 @@
                         <h:outputText value="Isento Rodízio por Decreto"/>
                         <h:panelGrid columns="2">
                             <h:inputText id="fk_veiculoIsentoRodizio" size="3"/>
-                            <p:selectOneMenu id="nr_veiculoIsentoRodizio">
+                            <p:selectOneMenu id="nr_veiculoIsentoRodizio" styleClass="lista">
                                 <f:selectItem itemLabel="Selecione tipo isenção" itemValue="000"/>
                                 <f:selectItem itemLabel="Transporte coletivo e de lotação" itemValue="001"/>
                                 <f:selectItem itemLabel="Motocicleta ou similar" itemValue="002"/>
@@ -113,7 +113,7 @@
                     <p:layoutUnit position="center" size="600" minSize="400" maxSize="600" style="border-width: 2px">
                         Imagem
                       <br/> 
-                       <p:panel>
+                      <p:panel style="position: relative; bottom: 0">
                             <p:commandButton value="Proximo" image="ui-icon-arrowthick-1-e" id="btn_proximo" styleClass="botao"/>
                             <p:commandButton value="Anterior" image="ui-icon-arrowthick-1-w" iconPos="right" id="btn_anterior" styleClass="botao"/>
                             <p:commandButton value="Panorâmica" image="ui-icon-image" id="btn_panoramica" styleClass="botao"/>

@@ -1,3 +1,14 @@
+/*
+Autor: Adalberto Kamida
+dt. inclusão: 
+
+*/
+/* 
+    Created on : 15/05/2015
+    Author     : Adalberto Kamida
+*/
+
+
 @CHARSET "ISO-8859-1";
 
 * {
@@ -91,7 +102,7 @@ body {
    min-height: 642px;
    margin:3px;
    padding: 2px;
-   font:normal 13px Arial;
+   font:normal 11px Arial;
    background-image: url(../images/background.png); 
    margin: 0 auto;
    clear:both;
@@ -101,7 +112,6 @@ fieldset {
 	margin-top:6px;
 	border:1px dashed #CCC;
 	padding:0;
-	width:1190px; 
 }
 
 .form {	margin:0;
@@ -323,81 +333,6 @@ background:transparent;
    color:#666666
 }
 
-/* Tela de digitação de placas*/
-
-.fontdescricao{
- font:bold 1.1em/1.3em Arial, 'Lucida Grande', 'Lucida Sans', Verdana, Sans-Serif; color:black;   
-}
-
-.valortotal{
-    margin-bottom:12px; font:20px  'Lucida Grande', 'Lucida Sans', Verdana, Sans-Serif; color:#FF0000;
-}
-
-.labelValorTotal{
-    margin-bottom:12px;  font:20px 'Lucida Grande', 'Lucida Sans', Verdana, Sans-Serif;
-}
-
-.descricao{
-    float:left;font:bold 1.3em/1.5em Arial, 'Lucida Grande', 'Lucida Sans', Verdana, Sans-Serif; color:#003869;
-}
-
-.saldo{
-    float:left;font:bold 1.3em/1.5em Arial, 'Lucida Grande', 'Lucida Sans', Verdana, Sans-Serif; color:#006400;
-}
-
-.limite{
-    font:bold 1.3em/1.5em Arial, 'Lucida Grande', 'Lucida Sans', Verdana, Sans-Serif; color:#000;
-}
-
-.btndetalhar {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
-	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
-	background-color:#ededed;
-	-moz-border-radius:8px;
-	-webkit-border-radius:8px;
-	border-radius:8px;
-	border:2px solid #dcdcdc;
-	display:inline-block;
-	color:#050405;
-	font-family:arial;
-	font-size:12px;
-	font-weight:bold;
-	padding:1px 1px;
-	text-decoration:none;
-        text-align: center;
-        width: 60px;
-}
-
-.legendaagendamento{
-width:10px;
-height: 18px;
-border-color: blue;
-display: block;
-background: red;
-float:left;  
-margin-left: 0px;
-margin-right: 5px;     
-}
-
-
-
-.pnlbotoes{
-  height: 5px;
-  margin:0px;
-  padding:0px;
-  text-align:center;
-  margin:20%;  
-}
-
-.pnlbotoes2{
-  height: 5px;
-  margin:0px;
-  padding:0px;
-  text-align:center;
-  margin-left: 25%;
-}
-
 
 .botao{  
 width: 87px !important;
@@ -419,9 +354,12 @@ height: 20px;
 .btn_panoramica{  
 width: 20px;
 height: 20px;
-
 }
 
 .letramensagem{
     font-size:18px;
+}
+
+.lista{
+font:normal 11px Arial !important;
 }
