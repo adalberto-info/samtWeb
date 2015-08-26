@@ -10,10 +10,10 @@
                 template="./../resources/templateMaster.xhtml">
 
     <ui:define name="tarefas">
-        <p:fieldset legend="Digitação de Placas" style="height: 670px">
+        <p:fieldset legend="Digitação de Placas" style="height: 630px">
             <h:form  prependId="false" id="formDigitacaoPlacas">
-                <p:layout style="min-width:1000px;min-height:400px">
-                    <p:layoutUnit position="west" size="400" style="border-width: 0px;">
+                <p:layout style="height:600px;width:1400px">
+                    <p:layoutUnit position="west" size="360" style="border-width: 0px">
                         <p:growl id="msg0"/>
                         <h:panelGrid columns="1">    
                             <h:outputText value="Dados da Infração"/>
@@ -110,24 +110,31 @@
                             </p:selectOneMenu>
                         </h:panelGrid>
                     </p:layoutUnit>
-                    <p:layoutUnit position="center" size="600" minSize="400" maxSize="600" style="border: 0px">
-                        <p:layout style="height: 400px" >
-                            <p:layoutUnit position="center"  style="border-width: 0px">
-                                Imagem
+                    <p:layoutUnit position="center" size="450" style="border: 0px">
+                        <p:layout >
+                            <p:layoutUnit position="center"  style="border-width: 0px; height: 70px">
+                                <p:graphicImage value="/temp/457052060873057_0.jpg" id="image" style="width:600px; height:530px"/>  
                             </p:layoutUnit>
                             <p:layoutUnit position="south" style="border-width: 0px">
-                                <p:panel>
-                                    <p:commandButton value="Proximo" image="ui-icon-arrowthick-1-e" id="btn_proximo" styleClass="botao"/>
-                                    <p:commandButton value="Anterior" image="ui-icon-arrowthick-1-w" iconPos="right" id="btn_anterior" styleClass="botao"/>
-                                    <p:commandButton value="Panorâmica" image="ui-icon-image" id="btn_panoramica" styleClass="botao"/>
-                                    <p:commandButton value="Obliterar" image="ui-icon-bookmark" id="btn_obliterar" styleClass="botao"/>
-                                </p:panel>
+                                <p:toolbar id="barraNavegacao" style="height: 36px">
+                                    <p:toolbarGroup align="left">
+                                        <p:commandButton value="Proximo" image="ui-icon-arrowthick-1-e" id="btn_proximo" styleClass="botao"/>
+                                        <p:commandButton value="Anterior" image="ui-icon-arrowthick-1-w" iconPos="right" id="btn_anterior" styleClass="botao"/>
+                                        <p:commandButton value="Panorâmica" image="ui-icon-image" id="btn_panoramica" styleClass="botao"/>
+                                        <p:commandButton value="Obliterar" image="ui-icon-bookmark" id="btn_obliterar" styleClass="botao"/>
+                                    </p:toolbarGroup>
+                                </p:toolbar>
                             </p:layoutUnit>
                         </p:layout>
                     </p:layoutUnit>
 
-                    <p:layoutUnit position="east" size="200" minSize="200" maxSize="200" style="border-width: 0px">
+                    <p:layoutUnit position="east" size="400" style="border-width: 0px;">
                         Motivo Inconsistência
+                        <p:selectOneListbox id="basic" style="width:380px">
+                            <f:selectItem itemLabel="Imagem sem nitidez/iluminação-equipamento" itemValue="01" />
+                            <f:selectItem itemLabel="Imagem sem nitidez - diversos (chuva, neblina, insolação, etc)" itemValue="02" />
+                            <f:selectItem itemLabel="Placa ilegível - má conservação ou posição no veículo" itemValue="03" />
+                        </p:selectOneListbox>
                     </p:layoutUnit>
 
                 </p:layout>

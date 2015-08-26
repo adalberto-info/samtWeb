@@ -106,4 +106,9 @@ dt. inclusão: 19/05/2015
         <servlet-name>Faces Servlet</servlet-name>  
     </filter-mapping> 
 -->
- </web-app>
+
+
+<!--    <property name="alternatedocroot_1" value="from=/diretorio/* dir=Z:/Filiais_privado/Kamida/repositorio/SP/001SP/2015/08/01" description="Uploaded Images"/> -->
+
+
+</web-app>
