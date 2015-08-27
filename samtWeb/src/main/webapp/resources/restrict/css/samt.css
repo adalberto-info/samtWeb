@@ -98,15 +98,16 @@ body {
 }
 
 #tarefas{
-   width:1260px;  
+   width:1260px;
    min-height: 642px;
-   margin:3px;
    padding: 2px;
    font:normal 11px Arial;
    background-image: url(../images/background.png); 
    margin: 0 auto;
    clear:both;
 }
+
+
 
 fieldset {
 	margin-top:6px;
