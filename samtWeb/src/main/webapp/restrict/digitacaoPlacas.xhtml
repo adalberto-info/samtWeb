@@ -10,8 +10,8 @@
                 template="./../resources/templateMaster.xhtml">
 
     <ui:define name="tarefas">
-        <p:fieldset legend="Digitação de Placas" style="height: 630px">
-            <h:form  prependId="false" id="formDigitacaoPlacas">
+        <p:fieldset legend="Digitação de Placas" style="height: 630px ">
+            <h:form  prependId="false" id="formDigitacaoPlacas" >
                 <p:layout style="height:600px;width:1400px">
                     <p:layoutUnit position="west" size="360" style="border-width: 0px">
                         <p:growl id="msg0"/>
@@ -110,7 +110,7 @@
                             </p:selectOneMenu>
                         </h:panelGrid>
                     </p:layoutUnit>
-                    <p:layoutUnit position="center" size="450" style="border: 0px">
+                    <p:layoutUnit position="center" size="450" style="border: 0px; alignment-adjust: central">
                         <p:layout >
                             <p:layoutUnit position="center"  style="border-width: 0px; height: 70px">
                                 <p:graphicImage value="/temp/457052060873057_0.jpg" id="image" style="width:600px; height:530px"/>  
@@ -130,7 +130,7 @@
 
                     <p:layoutUnit position="east" size="400" style="border-width: 0px;">
                         Motivo Inconsistência
-                        <p:selectOneListbox id="basic" style="width:380px">
+                        <p:selectOneListbox id="basic" style="width:380px; text-align: left">
                             <f:selectItem itemLabel="01-Imagem sem nitidez/iluminação - Equipamento"			     itemValue="01"/>
                             <f:selectItem itemLabel="02-Imagem sem nitidez - diversos (chuva, neblina, insolação, etc)"	     itemValue="02"/>
                             <f:selectItem itemLabel="03-Placa ilegível - má conservação ou posição no veículo"		     itemValue="03"/>
