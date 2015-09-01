@@ -98,9 +98,10 @@ body {
 }
 
 #tarefas{
-   width:1260px;
+   width:1400px;
    min-height: 642px;
    padding: 2px;
+   margin: 3px;
    font:normal 11px Arial;
    background-image: url(../images/background.png); 
    margin: 0 auto;
@@ -115,7 +116,8 @@ fieldset {
 	padding:0;
 }
 
-.form {	margin:0;
+.form {	margin:0 auto;
+	background-image: url(../images/background.png); 
 	padding:0;
 }
 
@@ -319,7 +321,6 @@ background:transparent;
    background-image: url(../images/background.png); 
    margin: 0 auto;
    clear:both;
-   background-image: url(../images/background.png); 
 }
 
 #workspace{
