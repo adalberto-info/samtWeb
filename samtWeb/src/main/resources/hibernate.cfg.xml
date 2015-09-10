@@ -45,6 +45,7 @@ dt. inclusão: 20/05/2015
         <mapping class="br.com.samtweb.model.entities.Usuario"/>         
         <mapping class="br.com.samtweb.model.entities.Infracao"/>   
         <mapping class="br.com.samtweb.model.entities.Veiculo"/>   
+        <mapping class="br.com.samtweb.model.entities.Infracao"/>
     </session-factory>
 </hibernate-configuration>
 
