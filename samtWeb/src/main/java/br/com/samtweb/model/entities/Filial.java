@@ -2,6 +2,7 @@
 package br.com.samtweb.model.entities;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +29,7 @@ public class Filial implements Serializable{
     
     @Id
     @GeneratedValue
-    @Column(name="id_filial", nullable=false)
+    @Column(name="id_filial", nullable=false, length=10)
     private Integer id_filial;
     @Column(name="dc_nomeFilial", nullable=false, length=40)
     private String dc_nomeFilial;

@@ -26,7 +26,7 @@ public class Municipio implements Serializable{
     private static final long serialVersionUID = 1L;
     
     @Id
-    @Column(name="id_municipio", nullable=false)
+    @Column(name="id_municipio", nullable=false, length=5)
     private Integer id_municipio;
     @Column(name="dc_municipio", length= 40, nullable=false)
     private String dc_municipio; 

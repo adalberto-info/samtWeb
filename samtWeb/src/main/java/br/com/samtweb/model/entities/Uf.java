@@ -26,7 +26,7 @@ public class Uf implements Serializable {
     
     @Id
     @GeneratedValue
-    @Column(name="id_uf", nullable=false)
+    @Column(name="id_uf", nullable=false, length=2)
     private Integer id_uf;
     @Column(name="dc_sigla", nullable=false)
     private String dc_sigla;

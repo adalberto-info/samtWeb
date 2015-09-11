@@ -11,6 +11,7 @@ import br.com.samtweb.model.dao.InterfaceDAO;
 import br.com.samtweb.model.entities.Filial;
 import br.com.samtweb.util.FacesContextUtil;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
