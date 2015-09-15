@@ -44,8 +44,8 @@ public class EspecieVeiculo implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 53 * hash + this.id_especie;
+        int hash = 7;
+        hash = 29 * hash + this.id_especie;
         return hash;
     }
 
@@ -58,8 +58,12 @@ public class EspecieVeiculo implements Serializable {
             return false;
         }
         final EspecieVeiculo other = (EspecieVeiculo) obj;
+        if (this.id_especie != other.id_especie) {
+            return false;
+        }
         return true;
     }
+
     
     
 }

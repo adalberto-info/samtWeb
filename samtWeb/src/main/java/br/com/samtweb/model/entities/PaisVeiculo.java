@@ -2,36 +2,37 @@
 package br.com.samtweb.model.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 /**
  * @autor: Adalberto Kamida
- * @dt. inclusao: 11/09/2015
+ * @dt. inclusao: 15/09/2015
  */
-
 @Entity
-@Table(name="corVeiculo")
-public class CorVeiculo implements Serializable {
+@Table(name="paisVeiculo")
+public class PaisVeiculo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
     @Id
-    @GeneratedValue
-    @Column(name="id_cor")
-    private Integer id_cor;
-    @Column(name="dc_descricao")
-    private String dc_descricao;
+    @Column(name="id_pais", nullable=false, length=10)
+    private int id_pais;
+    @Column(name="dc_descricao", nullable=false, length=40)
+    private String dc_descricao; 
 
-    public Integer getId_cor() {
-        return id_cor;
+    public int getId_pais() {
+        return id_pais;
     }
 
-    public void setId_cor(Integer id_cor) {
-        this.id_cor = id_cor;
+    public void setId_pais(int id_pais) {
+        this.id_pais = id_pais;
     }
 
     public String getDc_descricao() {
@@ -45,7 +46,7 @@ public class CorVeiculo implements Serializable {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 61 * hash + (this.id_cor != null ? this.id_cor.hashCode() : 0);
+        hash = 79 * hash + this.id_pais;
         return hash;
     }
 
@@ -57,13 +58,13 @@ public class CorVeiculo implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final CorVeiculo other = (CorVeiculo) obj;
-        if (this.id_cor != other.id_cor && (this.id_cor == null || !this.id_cor.equals(other.id_cor))) {
+        final PaisVeiculo other = (PaisVeiculo) obj;
+        if (this.id_pais != other.id_pais) {
             return false;
         }
         return true;
     }
-
-   
+    
+    
     
 }

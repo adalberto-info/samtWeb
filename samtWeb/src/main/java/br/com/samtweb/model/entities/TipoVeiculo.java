@@ -2,36 +2,36 @@
 package br.com.samtweb.model.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
  * @autor: Adalberto Kamida
- * @dt. inclusao: 11/09/2015
+ * @dt. inclusao: 15/09/2015
  */
-
 @Entity
-@Table(name="corVeiculo")
-public class CorVeiculo implements Serializable {
+@Table(name="tipoVeiculo")
+public class TipoVeiculo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
     @Id
-    @GeneratedValue
-    @Column(name="id_cor")
-    private Integer id_cor;
-    @Column(name="dc_descricao")
+    @Column(name="id_tipo", nullable=false, length=3)
+    private int id_tipo;
+    @Column(name="dc_descricao", nullable=false, length=20)
     private String dc_descricao;
 
-    public Integer getId_cor() {
-        return id_cor;
+    public int getId_tipo() {
+        return id_tipo;
     }
 
-    public void setId_cor(Integer id_cor) {
-        this.id_cor = id_cor;
+    public void setId_tipo(int id_tipo) {
+        this.id_tipo = id_tipo;
     }
 
     public String getDc_descricao() {
@@ -45,7 +45,7 @@ public class CorVeiculo implements Serializable {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 61 * hash + (this.id_cor != null ? this.id_cor.hashCode() : 0);
+        hash = 19 * hash + this.id_tipo;
         return hash;
     }
 
@@ -57,13 +57,14 @@ public class CorVeiculo implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final CorVeiculo other = (CorVeiculo) obj;
-        if (this.id_cor != other.id_cor && (this.id_cor == null || !this.id_cor.equals(other.id_cor))) {
+        final TipoVeiculo other = (TipoVeiculo) obj;
+        if (this.id_tipo != other.id_tipo) {
             return false;
         }
         return true;
     }
 
-   
-    
+
+
+
 }

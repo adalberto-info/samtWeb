@@ -46,6 +46,15 @@ dt. inclusão: 20/05/2015
         <mapping class="br.com.samtweb.model.entities.Infracao"/>   
         <mapping class="br.com.samtweb.model.entities.Veiculo"/>   
         <mapping class="br.com.samtweb.model.entities.Infracao"/>
+        <mapping class="br.com.samtweb.model.entities.CategoriaVeiculo"/>
+        <mapping class="br.com.samtweb.model.entities.CorVeiculo"/>
+        <mapping class="br.com.samtweb.model.entities.EspecieVeiculo"/>
+        <mapping class="br.com.samtweb.model.entities.TipoVeiculo"/>
+        <mapping class="br.com.samtweb.model.entities.PaisVeiculo"/>
+        <mapping class="br.com.samtweb.model.entities.MarcaDenatranVeiculo"/>
+        <mapping class="br.com.samtweb.model.entities.TipoInconsistencia"/>
+        <mapping class="br.com.samtweb.model.entities.Status"/> 
+        <mapping class="br.com.samtweb.model.entities.Processo"/>
     </session-factory>
 </hibernate-configuration>
 

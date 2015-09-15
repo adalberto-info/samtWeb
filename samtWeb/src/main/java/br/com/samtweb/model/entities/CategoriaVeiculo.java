@@ -44,8 +44,8 @@ public class CategoriaVeiculo implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 79 * hash + (this.id_categoria != null ? this.id_categoria.hashCode() : 0);
+        int hash = 7;
+        hash = 41 * hash + (this.id_categoria != null ? this.id_categoria.hashCode() : 0);
         return hash;
     }
 
@@ -58,8 +58,12 @@ public class CategoriaVeiculo implements Serializable {
             return false;
         }
         final CategoriaVeiculo other = (CategoriaVeiculo) obj;
+        if (this.id_categoria != other.id_categoria && (this.id_categoria == null || !this.id_categoria.equals(other.id_categoria))) {
+            return false;
+        }
         return true;
     }
+
  
     
     

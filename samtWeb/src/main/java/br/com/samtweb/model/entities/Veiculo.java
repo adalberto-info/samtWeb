@@ -122,7 +122,7 @@ public class Veiculo implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + this.id_veiculo;
+        hash = 71 * hash + this.id_veiculo;
         return hash;
     }
 
@@ -135,8 +135,12 @@ public class Veiculo implements Serializable {
             return false;
         }
         final Veiculo other = (Veiculo) obj;
+        if (this.id_veiculo != other.id_veiculo) {
+            return false;
+        }
         return true;
     }
+
     
     
     
