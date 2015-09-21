@@ -20,12 +20,14 @@
                     Deseja continuar ? 
                     </div>
                 </p:layoutUnit>
-                <p:layoutUnit position="south" style="border-width:2px">
-                    <div align="center">
-                    <h:panelGrid columns="2" style="width:200px">
-                        <p:commandButton value="Processar" image="ui-icon-check" id="btn_processar"/>
-                        <p:commandButton value="Cancelar"  image="ui-icon-arrowreturnthick-1-s" id="bnt_cancelar"/>
-                    </h:panelGrid>
+                <p:layoutUnit position="south" style="border-width: 2px">
+                    <div align="center" style="height: 39px">
+                        <p:toolbar >
+                            <p:toolbarGroup align="center">
+                                <p:commandButton value="Processar" action="#{mbInicializaTabela.iniciar}" image="ui-icon-check" id="btn_processar"/>
+                                <p:commandButton value="Cancelar" action="/restrict/home.faces" image="ui-icon-arrowreturnthick-1-s" id="bnt_cancelar"/>
+                            </p:toolbarGroup>
+                        </p:toolbar>
                     </div>
                 </p:layoutUnit>
             </p:layout>
