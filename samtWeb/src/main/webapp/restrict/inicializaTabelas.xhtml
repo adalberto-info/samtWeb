@@ -10,27 +10,29 @@
 
     <ui:define name="tarefas">
         <p:fieldset legend="Inicializa tabelas" style="height: 630px">
-            <p:layout style="height:600px; width: 1400px">
-                <p:layoutUnit position="center" style="border-width: 0px">
-                    <div align="center">    
-                    Este processo inicializa as tabelas para digitação de placas.  
-                    <br/>
-                    Todas as informações serão perdidas.
-                    <br/>
-                    Deseja continuar ? 
-                    </div>
-                </p:layoutUnit>
-                <p:layoutUnit position="south" style="border-width: 2px">
-                    <div align="center" style="height: 39px">
-                        <p:toolbar >
-                            <p:toolbarGroup align="center">
-                                <p:commandButton value="Processar" action="#{mbInicializaTabela.iniciar}" image="ui-icon-check" id="btn_processar"/>
-                                <p:commandButton value="Cancelar" action="/restrict/home.faces" image="ui-icon-arrowreturnthick-1-s" id="bnt_cancelar"/>
-                            </p:toolbarGroup>
-                        </p:toolbar>
-                    </div>
-                </p:layoutUnit>
-            </p:layout>
+            <h:form prependId="false" id="formInicializaTabelas">
+                <p:layout style="height:600px; width: 1400px">
+                    <p:layoutUnit position="center" style="border-width: 0px">
+                        <div align="center">    
+                            Este processo inicializa as tabelas para digitação de placas.  
+                            <br/>
+                            Todas as informações serão perdidas.
+                            <br/>
+                            Deseja continuar ? 
+                        </div>
+                    </p:layoutUnit>
+                    <p:layoutUnit position="south" style="border-width: 2px">
+                        <div align="center" style="height: 39px">
+                            <p:toolbar >
+                                <p:toolbarGroup align="center">
+                                    <p:commandButton value="Processar" action="#{mbInicializaTabela.iniciar}" image="ui-icon-check" id="btn_processar" update="@form"/>
+                                    <p:commandButton value="Cancelar" action="/restrict/home.faces" image="ui-icon-arrowreturnthick-1-s" id="bnt_cancelar"/>
+                                </p:toolbarGroup>
+                            </p:toolbar>
+                        </div>
+                    </p:layoutUnit>
+                </p:layout>
+             </h:form>    
         </p:fieldset>    
     </ui:define>
 </ui:composition>
