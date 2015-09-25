@@ -15,7 +15,6 @@ import javax.faces.context.FacesContext;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
 
 
 /**
@@ -43,39 +42,32 @@ public class MbInicializaTabela implements Serializable {
      
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Inicializando tabelas...",""));
         deletaInfracao();
+        alimentaInfracao();
     }
     
     private void deletaInfracao(){
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Passo 1...",""));
-        String stringQuery = "delete from infracao ";
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Passo 2...",""));
- //       Session session = FacesContextUtil.getRequestSession();
-        Session session = getSession();
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Passo 3...",""));
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Session: " + session,""));
-        Query query = session.createQuery("delete from infracao");
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Passo 4...",""));
-        int resultado = query.executeUpdate();
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registros excluídos da tabela infracao...",""));
+        
+        Session session = FacesContextUtil.getRequestSession();
+        int vln_Resultado = session.createSQLQuery("delete from infracao").executeUpdate();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Todos os registros excluídos da tabela infracao...",""));
     }
     
-    
-    public static Session getSession() {
-		Session session = (Session) MbInicializaTabela.session.get();
-		
-		if (session == null) {
-			session = sessionFactory.openSession();
-			MbInicializaTabela.session.set(session);
-		}
-	
-		return session;
-	}
-
-        private static final ThreadLocal session = new ThreadLocal();
-
-	private static final SessionFactory sessionFactory =
-		new AnnotationConfiguration().configure().buildSessionFactory();
-
-
-
+    private void alimentaInfracao(){
+        Session session = FacesContextUtil.getRequestSession();
+        String vlc_sql, vlc_parametrosSQL; 
+        vlc_sql = "insert into infracao (id_hashInfracao,dataJuliana,dc_matriculaAgente,dc_serieEquipameto,";
+        vlc_sql += "dc_urlInfracao,dh_recebimento,dh_transferencia,dt_dataInfracaoUTC,dt_dataInfracao,fk_enquadramento,";
+        vlc_sql += "fk_processo,fk_status,fk_tipoInconsistencia,hr_horaInfracao,hr_horaInfracaoUTC,lg_veiculoEstado,";
+        vlc_sql += "nr_classificaoVeiculo,nr_codigoInfracao,nr_codigoLocal,nr_dataHoraInfracao,nr_distanciaFaixaRetencao,";
+        vlc_sql += "nr_distanciaRegistrada,nr_faixa,nr_gravaTarja,nr_latitude,nr_longitude,nr_numeroLinhasTarja,";
+        vlc_sql += "nr_numeroSequencialInfracao,nr_numeroSequencialVeiculo,nr_numeroSequencialVeiculoInfrator,nr_porteVeiculo,";
+        vlc_sql += "nr_posicaoTarja,nr_sentidoVeiculo,nr_tamanhoVeiculo,nr_tempoPerdaoParada,nr_tempoPerdaoSemaforo,nr_tipoEquipamento,";
+        vlc_sql += "nr_tipoImagem,nr_velocidadeConsiderada,nr_velocidadePermitida,nr_velocidadeRegistrada,nr_velocidadeTolerada,";
+        vlc_sql += "nr_versao,nr_classificacaoVeiculo) values (";
+        vlc_sql += ":vlc_id_hashInfracao, :vlc_dataJuliana";
+        Query query = session.createSQLQuery(vlc_sql);
+        query.setParameter("vlc_id_hashInfracao", "1");
+        int vln_resultado = query.executeUpdate();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Inserido registros na tabela infracao...",""));
+    }
 }
