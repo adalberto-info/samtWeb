@@ -55,6 +55,7 @@ public class MbInicializaTabela implements Serializable {
     private void alimentaInfracao(){
         Session session = FacesContextUtil.getRequestSession();
         String vlc_sql, vlc_parametrosSQL; 
+        
         vlc_sql = "insert into infracao (id_hashInfracao,dataJuliana,dc_matriculaAgente,dc_serieEquipameto,";
         vlc_sql += "dc_urlInfracao,dh_recebimento,dh_transferencia,dt_dataInfracaoUTC,dt_dataInfracao,fk_enquadramento,";
         vlc_sql += "fk_processo,fk_status,fk_tipoInconsistencia,hr_horaInfracao,hr_horaInfracaoUTC,lg_veiculoEstado,";
@@ -65,7 +66,7 @@ public class MbInicializaTabela implements Serializable {
         vlc_sql += "nr_tipoImagem,nr_velocidadeConsiderada,nr_velocidadePermitida,nr_velocidadeRegistrada,nr_velocidadeTolerada,";
         vlc_sql += "nr_versao,nr_classificacaoVeiculo) values (";
         vlc_sql += ":vlc_id_hashInfracao, :vlc_dataJuliana, :vlc_dc_matriculaAgente, :vlc_dc_serieEquipamento,";
-        vlc_sql += ":vlc_dc_urlInfracao, :vlc_dh_recebimento, :vlc_dh_tranferencia, :vlc_dt_dataInfracaoUTC, :vlc_dt_dataInfracao, :vln_fk_enquadramento ";
+        vlc_sql += ":vlc_dc_urlInfracao, :vlc_dh_recebimento, :vlc_dh_tranferencia, :vlc_dt_dataInfracaoUTC, :vlc_dt_dataInfracao, :vln_fk_enquadramento, ";
         vlc_sql += ":vln_fk_processo,:vln_fk_status,:vln_fk_tipoInconsistencia,:vlc_hr_horaInfracao,:vlc_hr_horaInfracaoUTC,:vln_lg_veiculoEstado,";
         vlc_sql += ":vln_nr_classificaoVeiculo,:vln_nr_codigoInfracao,:vln_nr_codigoLocal,:vln_nr_dataHoraInfracao,:vln_nr_distanciaFaixaRetencao,";
         vlc_sql += ":vln_nr_distanciaRegistrada,:vln_nr_faixa,:vln_nr_gravaTarja,:vln_nr_latitude,:vln_nr_longitude,:vln_nr_numeroLinhasTarja,";
@@ -73,7 +74,8 @@ public class MbInicializaTabela implements Serializable {
         vlc_sql += ":vln_nr_posicaoTarja,:vln_nr_sentidoVeiculo,:vln_nr_tamanhoVeiculo,:vln_nr_tempoPerdaoParada,:vln_nr_tempoPerdaoSemaforo,:vln_nr_tipoEquipamento,";
         vlc_sql += ":vln_nr_tipoImagem,:vln_nr_velocidadeConsiderada,:vln_nr_velocidadePermitida,:vln_nr_velocidadeRegistrada,:vln_nr_velocidadeTolerada,";
         vlc_sql += ":vln_nr_versao,:vln_nr_classificacaoVeiculo)";
- 
+
+        
         Query query = session.createSQLQuery(vlc_sql);
         query.setParameter("vlc_id_hashInfracao", 1);
         query.setParameter("vlc_dataJuliana", "999999");
@@ -99,8 +101,8 @@ public class MbInicializaTabela implements Serializable {
         query.setParameter("vln_nr_distanciaRegistrada", 1);
         query.setParameter("vln_nr_faixa", 1);
         query.setParameter("vln_nr_gravaTarja",1);
-        query.setParameter("vln_nr_latitude", 542134);
-        query.setParameter("vln_nr_longitude", 78444);
+        query.setParameter("vln_nr_latitude", 542.134);
+        query.setParameter("vln_nr_longitude", 784.44);
         query.setParameter("vln_nr_numeroLinhasTarja", 3);
         query.setParameter("vln_nr_numeroSequencialInfracao", 1);
         query.setParameter("vln_nr_numeroSequencialVeiculo",1);
@@ -108,7 +110,7 @@ public class MbInicializaTabela implements Serializable {
         query.setParameter("vln_nr_porteVeiculo", 0);
         query.setParameter("vln_nr_posicaoTarja", 1);
         query.setParameter("vln_nr_sentidoVeiculo", 1);
-        query.setParameter("vln_nr_tamanhoVeiculo", 4500);
+        query.setParameter("vln_nr_tamanhoVeiculo", 45.00);
         query.setParameter("vln_nr_tempoPerdaoParada", 0);
         query.setParameter("vln_nr_tempoPerdaoSemaforo", 0);
         query.setParameter("vln_nr_tipoEquipamento", 1);
@@ -120,6 +122,8 @@ public class MbInicializaTabela implements Serializable {
         query.setParameter("vln_nr_versao", 28);
         query.setParameter("vln_nr_classificacaoVeiculo", 0);
         int vln_resultado = query.executeUpdate();
+        
+        
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Inserido registros na tabela infracao...",""));
     }
 }
