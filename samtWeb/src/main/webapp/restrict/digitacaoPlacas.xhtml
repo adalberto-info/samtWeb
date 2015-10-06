@@ -9,18 +9,22 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="./../resources/templateMaster.xhtml">
 
+    <f:metadata>
+        <f:event listener="#{mbInfracao.inicializar}" type="preRenderView" />
+    </f:metadata>     
+    
     <ui:define name="tarefas">
         <p:fieldset legend="Digitação de Placas" style="height: 630px ">
             <h:form  prependId="false" id="formDigitacaoPlacas" >
                 <p:layout style="height:600px;width:1400px">
                     <p:layoutUnit position="west" size="360" style="border-width: 0px">
-                        <p:growl id="msg0"/>
+                        <p:growl id="msg0" showDetail="true" autoUpdate="true" />
                         <h:panelGrid columns="1">    
                             <h:outputText value="Dados da Infração"/>
                             <h:outputText value="Identificação"/>
                         </h:panelGrid>
                         <h:panelGrid columns="2">
-                            <h:inputText id="nr_codLocal" size="4"/>
+                            <h:inputText id="nr_codLocal" value="#{mbInfracao.infracao.nr_codigoLocal}" size="4"/>
                             <h:inputText id="dc_numeroAit" size="10"/>
                         </h:panelGrid>   
                         <h:panelGrid columns="1">
@@ -118,8 +122,8 @@
                             <p:layoutUnit position="south" style="border-width: 0px">
                                 <p:toolbar id="barraNavegacao" style="height: 36px">
                                     <p:toolbarGroup align="left">
-                                        <p:commandButton value="Proximo" image="ui-icon-arrowthick-1-e" id="btn_proximo" styleClass="botao"/>
-                                        <p:commandButton value="Anterior" image="ui-icon-arrowthick-1-w" iconPos="right" id="btn_anterior" styleClass="botao"/>
+                                        <p:commandButton value="Proximo" image="ui-icon-arrowthick-1-e" id="btn_proximo" styleClass="botao" action="#{mbInfracao.proximoRegistro}" update="@form"/>
+                                        <p:commandButton value="Anterior" image="ui-icon-arrowthick-1-w" iconPos="right" id="btn_anterior" styleClass="botao" action="#{mbInfracao.anteriorRegistro}" update="@form"/>
                                         <p:commandButton value="Panorâmica" image="ui-icon-image" id="btn_panoramica" styleClass="botao"/>
                                         <p:commandButton value="Obliterar" image="ui-icon-bookmark" id="btn_obliterar" styleClass="botao"/>
                                     </p:toolbarGroup>

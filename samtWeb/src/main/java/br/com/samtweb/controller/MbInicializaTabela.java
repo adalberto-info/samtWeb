@@ -142,7 +142,7 @@ public class MbInicializaTabela implements Serializable {
         query.setParameter("vln_lg_veiculoEstado", 1);
         query.setParameter("vln_nr_classificaoVeiculo", 0);
         query.setParameter("vln_nr_codigoInfracao", 1);
-        query.setParameter("vln_nr_codigoLocal", 1);
+        query.setParameter("vln_nr_codigoLocal", 2);
         query.setParameter("vln_nr_dataHoraInfracao", "2015-09-28 09:15:03");
         query.setParameter("vln_nr_distanciaFaixaRetencao", 2);
         query.setParameter("vln_nr_distanciaRegistrada", 1);
@@ -188,7 +188,7 @@ public class MbInicializaTabela implements Serializable {
         query.setParameter("vln_lg_veiculoEstado", 1);
         query.setParameter("vln_nr_classificaoVeiculo", 0);
         query.setParameter("vln_nr_codigoInfracao", 1);
-        query.setParameter("vln_nr_codigoLocal", 1);
+        query.setParameter("vln_nr_codigoLocal", 3);
         query.setParameter("vln_nr_dataHoraInfracao", "2015-09-28 10:35:45");
         query.setParameter("vln_nr_distanciaFaixaRetencao", 2);
         query.setParameter("vln_nr_distanciaRegistrada", 1);
