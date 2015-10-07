@@ -30,10 +30,11 @@ public class MbInfracao implements Serializable {
     
     private List<Infracao> infracoes;
     private ListIterator<Infracao> listIterator;
+    private boolean vpl_primeiraVez = true;
     
     public MbInfracao(){
     }
-    
+
     private InterfaceDAO<Infracao> infracaoDAO(){
         InterfaceDAO<Infracao> infracaoDAO= new HibernateDAO<Infracao>(Infracao.class, FacesContextUtil.getRequestSession());
         return infracaoDAO;
@@ -53,24 +54,27 @@ public class MbInfracao implements Serializable {
     
     public List<Infracao> getInfracoes(){
         infracoes = infracaoDAO().getEntities();
-        listIterator = infracoes.listIterator();
         return infracoes;
     }
  
     public void proximoRegistro() {
-//        this.infracao = this.infracoes.get(1);
-        listIterator.nextIndex();
+        this.infracao = this.infracoes.get(1);
     }
 
     public void anteriorRegistro(){
-        listIterator.previousIndex();
+        this.infracao = this.infracoes.get(0);
         
     }
     
-    
     public void inicializar(){
-        getInfracoes();
-//        proximoRegistro();
+    
+        if (vpl_primeiraVez = true){
+            getInfracoes();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "executei o método inicializar...",""));
+            vpl_primeiraVez = false;
+        }else{
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "não atualizei o list de infracoes...",""));
+        }
     }
     
 }

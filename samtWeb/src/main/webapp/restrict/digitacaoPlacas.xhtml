@@ -10,7 +10,7 @@
                 template="./../resources/templateMaster.xhtml">
 
     <f:metadata>
-        <f:event listener="#{mbInfracao.inicializar}" type="preRenderView" />
+        <f:event listener="#{mbInfracao.inicializar}" type="preRenderView" />   
     </f:metadata>     
     
     <ui:define name="tarefas">
@@ -122,7 +122,7 @@
                             <p:layoutUnit position="south" style="border-width: 0px">
                                 <p:toolbar id="barraNavegacao" style="height: 36px">
                                     <p:toolbarGroup align="left">
-                                        <p:commandButton value="Proximo" image="ui-icon-arrowthick-1-e" id="btn_proximo" styleClass="botao" action="#{mbInfracao.proximoRegistro}" update="@form"/>
+                                        <p:commandButton value="Proximo" image="ui-icon-arrowthick-1-e" id="btn_proximo" styleClass="botao" action="#{mbInfracao.proximoRegistro}" update="@form"/>  
                                         <p:commandButton value="Anterior" image="ui-icon-arrowthick-1-w" iconPos="right" id="btn_anterior" styleClass="botao" action="#{mbInfracao.anteriorRegistro}" update="@form"/>
                                         <p:commandButton value="Panorâmica" image="ui-icon-image" id="btn_panoramica" styleClass="botao"/>
                                         <p:commandButton value="Obliterar" image="ui-icon-bookmark" id="btn_obliterar" styleClass="botao"/>
