@@ -25,56 +25,55 @@ import org.hibernate.Session;
 @SessionScoped
 public class MbInfracao implements Serializable {
     private static final long serialVersioUID = 1L;
-    
+
     private Infracao infracao = new Infracao();
-    
+
     private List<Infracao> infracoes;
     private ListIterator<Infracao> listIterator;
-    private boolean vpl_primeiraVez = true;
+    private int vln_indice = 0;
     
     public MbInfracao(){
+	getInfracoes();
+	this.infracao = this.infracoes.get(vln_indice);
     }
 
     private InterfaceDAO<Infracao> infracaoDAO(){
         InterfaceDAO<Infracao> infracaoDAO= new HibernateDAO<Infracao>(Infracao.class, FacesContextUtil.getRequestSession());
         return infracaoDAO;
     }
-    
+
     public void limpaInfracao(){
         infracao = new Infracao();
     }
-    
+
     public Infracao getInfracao(){
         return infracao;
     }
-    
+
     public void setInfracao(Infracao infracao){
-        this.infracao = infracao; 
+        this.infracao = infracao;
     }
-    
+
     public List<Infracao> getInfracoes(){
         infracoes = infracaoDAO().getEntities();
         return infracoes;
     }
- 
+
     public void proximoRegistro() {
-        this.infracao = this.infracoes.get(1);
+        vln_indice++;
+        if (vln_indice > (this.infracoes.size()-1)){
+            vln_indice = (this.infracoes.size()-1);
+        } 
+        this.infracao = this.infracoes.get(vln_indice);
     }
 
     public void anteriorRegistro(){
-        this.infracao = this.infracoes.get(0);
-        
+        vln_indice--; 
+        if (vln_indice < 0){
+            vln_indice = 0;
+        } 
+        this.infracao = this.infracoes.get(vln_indice);
+
     }
-    
-    public void inicializar(){
-    
-        if (vpl_primeiraVez = true){
-            getInfracoes();
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "executei o método inicializar...",""));
-            vpl_primeiraVez = false;
-        }else{
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "não atualizei o list de infracoes...",""));
-        }
-    }
-    
+
 }
