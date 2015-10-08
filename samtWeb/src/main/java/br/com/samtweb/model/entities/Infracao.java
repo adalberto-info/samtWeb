@@ -27,6 +27,8 @@ public class Infracao implements Serializable {
     private String id_hashInfracao;
     @Column(name="nr_codigoLocal", nullable=false, length=4)
     private Integer nr_codigoLocal;
+    @Column(name="dc_numeroAit", nullable=false, length=10)
+    private String dc_numeroAit;
     @Column(name="nr_longitude", nullable=false, precision=11, scale=8)
     private Float nr_longitude;
     @Column(name="nr_latitude", nullable=false, precision=11, scale=8)
@@ -126,6 +128,14 @@ public class Infracao implements Serializable {
 
     public void setNr_codigoLocal(Integer nr_codigoLocal) {
         this.nr_codigoLocal = nr_codigoLocal;
+    }
+
+    public String getDc_numeroAit() {
+        return dc_numeroAit;
+    }
+
+    public void setDc_numeroAit(String dc_numeroAit) {
+        this.dc_numeroAit = dc_numeroAit;
     }
 
     public Float getNr_longitude() {
