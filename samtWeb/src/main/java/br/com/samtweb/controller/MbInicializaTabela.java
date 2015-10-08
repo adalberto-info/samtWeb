@@ -57,7 +57,7 @@ public class MbInicializaTabela implements Serializable {
         String vlc_sql, vlc_parametrosSQL; 
         int vln_resultado = 0; 
         
-        vlc_sql = "insert into infracao (id_hashInfracao,dataJuliana,dc_matriculaAgente,dc_serieEquipameto,";
+        vlc_sql = "insert into infracao (id_hashInfracao,dc_numeroAit,dataJuliana,dc_matriculaAgente,dc_serieEquipameto,";
         vlc_sql += "dc_urlInfracao,dh_recebimento,dh_transferencia,dt_dataInfracaoUTC,dt_dataInfracao,fk_enquadramento,";
         vlc_sql += "fk_processo,fk_status,fk_tipoInconsistencia,hr_horaInfracao,hr_horaInfracaoUTC,lg_veiculoEstado,";
         vlc_sql += "nr_classificaoVeiculo,nr_codigoInfracao,nr_codigoLocal,nr_dataHoraInfracao,nr_distanciaFaixaRetencao,";
@@ -66,7 +66,7 @@ public class MbInicializaTabela implements Serializable {
         vlc_sql += "nr_posicaoTarja,nr_sentidoVeiculo,nr_tamanhoVeiculo,nr_tempoPerdaoParada,nr_tempoPerdaoSemaforo,nr_tipoEquipamento,";
         vlc_sql += "nr_tipoImagem,nr_velocidadeConsiderada,nr_velocidadePermitida,nr_velocidadeRegistrada,nr_velocidadeTolerada,";
         vlc_sql += "nr_versao,nr_classificacaoVeiculo) values (";
-        vlc_sql += ":vlc_id_hashInfracao, :vlc_dataJuliana, :vlc_dc_matriculaAgente, :vlc_dc_serieEquipamento,";
+        vlc_sql += ":vlc_id_hashInfracao, :vlc_dc_numeroAit, :vlc_dataJuliana, :vlc_dc_matriculaAgente, :vlc_dc_serieEquipamento,";
         vlc_sql += ":vlc_dc_urlInfracao, :vlc_dh_recebimento, :vlc_dh_tranferencia, :vlc_dt_dataInfracaoUTC, :vlc_dt_dataInfracao, :vln_fk_enquadramento, ";
         vlc_sql += ":vln_fk_processo,:vln_fk_status,:vln_fk_tipoInconsistencia,:vlc_hr_horaInfracao,:vlc_hr_horaInfracaoUTC,:vln_lg_veiculoEstado,";
         vlc_sql += ":vln_nr_classificaoVeiculo,:vln_nr_codigoInfracao,:vln_nr_codigoLocal,:vln_nr_dataHoraInfracao,:vln_nr_distanciaFaixaRetencao,";
@@ -79,6 +79,7 @@ public class MbInicializaTabela implements Serializable {
         
         Query query = session.createSQLQuery(vlc_sql);
         query.setParameter("vlc_id_hashInfracao", 1);
+        query.setParameter("vlc_dc_numeroAit", "111111111");
         query.setParameter("vlc_dataJuliana", "999999");
         query.setParameter("vlc_dc_matriculaAgente", "000000");
         query.setParameter("vlc_dc_serieEquipamento", " ");
@@ -125,6 +126,7 @@ public class MbInicializaTabela implements Serializable {
         vln_resultado = query.executeUpdate();
 
         query.setParameter("vlc_id_hashInfracao", 2);
+        query.setParameter("vlc_dc_numeroAit", "222222222");
         query.setParameter("vlc_dataJuliana", "999999");
         query.setParameter("vlc_dc_matriculaAgente", "000000");
         query.setParameter("vlc_dc_serieEquipamento", " ");
@@ -171,6 +173,7 @@ public class MbInicializaTabela implements Serializable {
         vln_resultado = query.executeUpdate();
         
         query.setParameter("vlc_id_hashInfracao", 3);
+        query.setParameter("vlc_dc_numeroAit", "333333333");
         query.setParameter("vlc_dataJuliana", "999999");
         query.setParameter("vlc_dc_matriculaAgente", "000000");
         query.setParameter("vlc_dc_serieEquipamento", " ");
