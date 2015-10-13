@@ -57,29 +57,31 @@ public class MbInicializaTabela implements Serializable {
         String vlc_sql, vlc_parametrosSQL; 
         int vln_resultado = 0; 
         
+
+        
         vlc_sql = "insert into infracao (id_hashInfracao,dc_numeroAit,dataJuliana,dc_matriculaAgente,dc_serieEquipameto,";
         vlc_sql += "dc_urlInfracao,dh_recebimento,dh_transferencia,dt_dataInfracaoUTC,dt_dataInfracao,fk_enquadramento,";
         vlc_sql += "fk_processo,fk_status,fk_tipoInconsistencia,hr_horaInfracao,hr_horaInfracaoUTC,lg_veiculoEstado,";
-        vlc_sql += "nr_classificaoVeiculo,nr_codigoInfracao,nr_codigoLocal,nr_dataHoraInfracao,nr_distanciaFaixaRetencao,";
+        vlc_sql += "nr_classificacaoVeiculo,nr_codigoInfracao,nr_codigoLocal,nr_dataHoraInfracao,nr_distanciaFaixaRetencao,";
         vlc_sql += "nr_distanciaRegistrada,nr_faixa,nr_gravaTarja,nr_latitude,nr_longitude,nr_numeroLinhasTarja,";
         vlc_sql += "nr_numeroSequencialInfracao,nr_numeroSequencialVeiculo,nr_numeroSequencialVeiculoInfrator,nr_porteVeiculo,";
         vlc_sql += "nr_posicaoTarja,nr_sentidoVeiculo,nr_tamanhoVeiculo,nr_tempoPerdaoParada,nr_tempoPerdaoSemaforo,nr_tipoEquipamento,";
         vlc_sql += "nr_tipoImagem,nr_velocidadeConsiderada,nr_velocidadePermitida,nr_velocidadeRegistrada,nr_velocidadeTolerada,";
-        vlc_sql += "nr_versao,nr_classificacaoVeiculo) values (";
+        vlc_sql += "nr_versao) values (";
         vlc_sql += ":vlc_id_hashInfracao, :vlc_dc_numeroAit, :vlc_dataJuliana, :vlc_dc_matriculaAgente, :vlc_dc_serieEquipamento,";
         vlc_sql += ":vlc_dc_urlInfracao, :vlc_dh_recebimento, :vlc_dh_tranferencia, :vlc_dt_dataInfracaoUTC, :vlc_dt_dataInfracao, :vln_fk_enquadramento, ";
         vlc_sql += ":vln_fk_processo,:vln_fk_status,:vln_fk_tipoInconsistencia,:vlc_hr_horaInfracao,:vlc_hr_horaInfracaoUTC,:vln_lg_veiculoEstado,";
-        vlc_sql += ":vln_nr_classificaoVeiculo,:vln_nr_codigoInfracao,:vln_nr_codigoLocal,:vln_nr_dataHoraInfracao,:vln_nr_distanciaFaixaRetencao,";
+        vlc_sql += ":vln_nr_classificacaoVeiculo,:vln_nr_codigoInfracao,:vln_nr_codigoLocal,:vln_nr_dataHoraInfracao,:vln_nr_distanciaFaixaRetencao,";
         vlc_sql += ":vln_nr_distanciaRegistrada,:vln_nr_faixa,:vln_nr_gravaTarja,:vln_nr_latitude,:vln_nr_longitude,:vln_nr_numeroLinhasTarja,";
         vlc_sql += ":vln_nr_numeroSequencialInfracao,:vln_nr_numeroSequencialVeiculo,:vln_nr_numeroSequencialVeiculoInfrator,:vln_nr_porteVeiculo,";
         vlc_sql += ":vln_nr_posicaoTarja,:vln_nr_sentidoVeiculo,:vln_nr_tamanhoVeiculo,:vln_nr_tempoPerdaoParada,:vln_nr_tempoPerdaoSemaforo,:vln_nr_tipoEquipamento,";
         vlc_sql += ":vln_nr_tipoImagem,:vln_nr_velocidadeConsiderada,:vln_nr_velocidadePermitida,:vln_nr_velocidadeRegistrada,:vln_nr_velocidadeTolerada,";
-        vlc_sql += ":vln_nr_versao,:vln_nr_classificacaoVeiculo)";
+        vlc_sql += ":vln_nr_versao)";
 
         
         Query query = session.createSQLQuery(vlc_sql);
-        query.setParameter("vlc_id_hashInfracao", 1);
-        query.setParameter("vlc_dc_numeroAit", "111111111");
+        query.setParameter("vlc_id_hashInfracao", "1");
+        query.setParameter("vlc_dc_numeroAit", "11111");
         query.setParameter("vlc_dataJuliana", "999999");
         query.setParameter("vlc_dc_matriculaAgente", "000000");
         query.setParameter("vlc_dc_serieEquipamento", " ");
@@ -95,7 +97,7 @@ public class MbInicializaTabela implements Serializable {
         query.setParameter("vlc_hr_horaInfracao", "08:01:02");
         query.setParameter("vlc_hr_horaInfracaoUTC", "08:01:02");
         query.setParameter("vln_lg_veiculoEstado", 1);
-        query.setParameter("vln_nr_classificaoVeiculo", 0);
+        query.setParameter("vln_nr_classificacaoVeiculo", 0);
         query.setParameter("vln_nr_codigoInfracao", 1);
         query.setParameter("vln_nr_codigoLocal", 1);
         query.setParameter("vln_nr_dataHoraInfracao", "2015-09-28 08:01:02");
@@ -122,10 +124,9 @@ public class MbInicializaTabela implements Serializable {
         query.setParameter("vln_nr_velocidadeRegistrada", 69);
         query.setParameter("vln_nr_velocidadeTolerada", 60); 
         query.setParameter("vln_nr_versao", 28);
-        query.setParameter("vln_nr_classificacaoVeiculo", 0);
         vln_resultado = query.executeUpdate();
 
-        query.setParameter("vlc_id_hashInfracao", 2);
+        query.setParameter("vlc_id_hashInfracao", "2");
         query.setParameter("vlc_dc_numeroAit", "222222222");
         query.setParameter("vlc_dataJuliana", "999999");
         query.setParameter("vlc_dc_matriculaAgente", "000000");
@@ -142,7 +143,7 @@ public class MbInicializaTabela implements Serializable {
         query.setParameter("vlc_hr_horaInfracao", "09:15:03");
         query.setParameter("vlc_hr_horaInfracaoUTC", "09:15:03");
         query.setParameter("vln_lg_veiculoEstado", 1);
-        query.setParameter("vln_nr_classificaoVeiculo", 0);
+        query.setParameter("vln_nr_classificacaoVeiculo", 0);
         query.setParameter("vln_nr_codigoInfracao", 1);
         query.setParameter("vln_nr_codigoLocal", 2);
         query.setParameter("vln_nr_dataHoraInfracao", "2015-09-28 09:15:03");
@@ -169,10 +170,9 @@ public class MbInicializaTabela implements Serializable {
         query.setParameter("vln_nr_velocidadeRegistrada", 69);
         query.setParameter("vln_nr_velocidadeTolerada", 60); 
         query.setParameter("vln_nr_versao", 28);
-        query.setParameter("vln_nr_classificacaoVeiculo", 0);
         vln_resultado = query.executeUpdate();
         
-        query.setParameter("vlc_id_hashInfracao", 3);
+        query.setParameter("vlc_id_hashInfracao", "3");
         query.setParameter("vlc_dc_numeroAit", "333333333");
         query.setParameter("vlc_dataJuliana", "999999");
         query.setParameter("vlc_dc_matriculaAgente", "000000");
@@ -189,7 +189,7 @@ public class MbInicializaTabela implements Serializable {
         query.setParameter("vlc_hr_horaInfracao", "10:35:45");
         query.setParameter("vlc_hr_horaInfracaoUTC", "10:35:45");
         query.setParameter("vln_lg_veiculoEstado", 1);
-        query.setParameter("vln_nr_classificaoVeiculo", 0);
+        query.setParameter("vln_nr_classificacaoVeiculo", 0);
         query.setParameter("vln_nr_codigoInfracao", 1);
         query.setParameter("vln_nr_codigoLocal", 3);
         query.setParameter("vln_nr_dataHoraInfracao", "2015-09-28 10:35:45");
@@ -216,7 +216,6 @@ public class MbInicializaTabela implements Serializable {
         query.setParameter("vln_nr_velocidadeRegistrada", 69);
         query.setParameter("vln_nr_velocidadeTolerada", 60); 
         query.setParameter("vln_nr_versao", 28);
-        query.setParameter("vln_nr_classificacaoVeiculo", 0);
         vln_resultado = query.executeUpdate();
         
         
