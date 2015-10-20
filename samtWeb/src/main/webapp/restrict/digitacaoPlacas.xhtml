@@ -45,11 +45,11 @@
                         <h:panelGrid columns="2">
                             <h:outputText value="Placa"/>
                             <h:outputText value="Enquadramento"/>
-                            <h:inputText id="dc_placa" size="10"/>
-                            <h:inputText id="fk_enquadramento" size="10"/>
+                            <h:inputText id="dc_placa" value="#{mbInfracao.infracao.dc_placaVeiculo}" size="10"/>
+                            <h:inputText id="fk_enquadramento" value="#{mbInfracao.infracao.fk_enquadramento}" size="10"/>
                             <h:outputText value="Cor"/>
                             <h:outputText value="Categoria"/>
-                            <h:inputText id="dc_cor" size="15"/>
+                            <h:inputText id="dc_cor"  size="15"/>
                             <h:inputText id="dc_categoria" size="30"/>             
                         </h:panelGrid>
                         <h:panelGrid columns="3">
