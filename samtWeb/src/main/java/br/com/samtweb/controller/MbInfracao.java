@@ -14,7 +14,6 @@ import br.com.samtweb.util.FacesContextUtil;
 import br.com.samtweb.model.consult.InfracaoVeiculo;
 import java.io.Serializable;
 import java.util.List;
-import java.util.ListIterator;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -32,12 +31,12 @@ public class MbInfracao implements Serializable {
     
     private List<Infracao> infracoes;
     private List<InfracaoVeiculo> infracaoVeiculos;
-    private ListIterator<Infracao> listIterator;
     private int vln_indice = 0;
     
     public MbInfracao(){
 	getInfracoes();
 	this.infracao = this.infracoes.get(vln_indice);
+  //      procuraPlaca(infracao.getDc_placaVeiculo());
     }
 
     private InterfaceDAO<Infracao> infracaoDAO(){
@@ -68,6 +67,7 @@ public class MbInfracao implements Serializable {
             vln_indice = (this.infracoes.size()-1);
         } 
         this.infracao = this.infracoes.get(vln_indice);
+ //       procuraPlaca(infracao.getDc_placaVeiculo());
     }
 
     public void anteriorRegistro(){
@@ -76,7 +76,7 @@ public class MbInfracao implements Serializable {
             vln_indice = 0;
         } 
         this.infracao = this.infracoes.get(vln_indice);
-
+   //     procuraPlaca(infracao.getDc_placaVeiculo());
     }
 
     public void procuraPlaca(String placa){
@@ -85,25 +85,33 @@ public class MbInfracao implements Serializable {
         String vlc_sql, vlc_parametrosSQL; 
         int vln_resultado = 0; 
         
-//        vlc_sql = "select a.* from veiculo a where a.dc_placa = '" + placa + "' ";
-  
         vlc_sql = "select a.dc_placa, a.fk_categoria, a.fk_cor, a.fk_especie, a.fk_marcaDenatran, ";
         vlc_sql += "a.fk_municipio, a.fk_tipo, a.nr_anoModelo, a.nr_renavam, b.descricao as dc_categoria, ";
         vlc_sql += "c.descricao as dc_cor, d.dc_descricao as dc_especie, e.dc_descricao as dc_marcaDenatran, ";
         vlc_sql += "f.descricao as dc_municipio, g.descricao as dc_tipo ";
-        vlc_sql += "from veiculo " ;
+        vlc_sql += "from veiculo a " ;
         vlc_sql += "inner join categoriaVeiculo b on a.fk_categoria = b.id_categoria ";
         vlc_sql += "inner join corVeiulo c on a.fk_cor = c.id_cor ";
         vlc_sql += "inner join especieVeiulo d on a.fk_especie = d.id_especie ";
         vlc_sql += "inner join municipio f on a.fk_municipio = f.id_municipio ";
         vlc_sql += "inner join tipoVeiculo g on a.fk_tipo = g.id_tipo ";
-        
+        vlc_sql += "where a.dc_placa = '" + placa + "' ";
         
         Query query = session.createSQLQuery(vlc_sql);
-        infracaoVeiculos = query.list();
-        
+        this.infracaoVeiculos = query.list();
+        this.infracaoVeiculo = this.infracaoVeiculos.get(0);
         
     }
 
+    public InfracaoVeiculo getInfracaoVeiculo(){
+        return this.infracaoVeiculo;
+    }
     
+    public void setInfracaoVeiculo(InfracaoVeiculo infracaoVeiculo){
+        this.infracaoVeiculo = infracaoVeiculo;
+    }
+    
+    public List<InfracaoVeiculo> getInfracaoVeiculos(){
+        return infracaoVeiculos;
+    }
 }
