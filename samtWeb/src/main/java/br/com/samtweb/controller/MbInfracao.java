@@ -36,7 +36,7 @@ public class MbInfracao implements Serializable {
     public MbInfracao(){
 	getInfracoes();
 	this.infracao = this.infracoes.get(vln_indice);
-  //      procuraPlaca(infracao.getDc_placaVeiculo());
+        procuraPlaca(infracao.getDc_placaVeiculo());
     }
 
     private InterfaceDAO<Infracao> infracaoDAO(){
@@ -67,7 +67,7 @@ public class MbInfracao implements Serializable {
             vln_indice = (this.infracoes.size()-1);
         } 
         this.infracao = this.infracoes.get(vln_indice);
- //       procuraPlaca(infracao.getDc_placaVeiculo());
+        procuraPlaca(infracao.getDc_placaVeiculo());
     }
 
     public void anteriorRegistro(){
@@ -76,7 +76,7 @@ public class MbInfracao implements Serializable {
             vln_indice = 0;
         } 
         this.infracao = this.infracoes.get(vln_indice);
-   //     procuraPlaca(infracao.getDc_placaVeiculo());
+        procuraPlaca(infracao.getDc_placaVeiculo());
     }
 
     public void procuraPlaca(String placa){
@@ -86,15 +86,16 @@ public class MbInfracao implements Serializable {
         int vln_resultado = 0; 
         
         vlc_sql = "select a.dc_placa, a.fk_categoria, a.fk_cor, a.fk_especie, a.fk_marcaDenatran, ";
-        vlc_sql += "a.fk_municipio, a.fk_tipo, a.nr_anoModelo, a.nr_renavam, b.descricao as dc_categoria, ";
-        vlc_sql += "c.descricao as dc_cor, d.dc_descricao as dc_especie, e.dc_descricao as dc_marcaDenatran, ";
-        vlc_sql += "f.descricao as dc_municipio, g.descricao as dc_tipo ";
+        vlc_sql += "a.fk_municipio, a.fk_tipo, a.nr_anoModelo, a.nr_renavam, b.dc_descricao as dc_categoria, ";
+        vlc_sql += "c.dc_descricao as dc_cor, d.dc_descricao as dc_especie, e.dc_descricao as dc_marcaDenatran, ";
+        vlc_sql += "f.dc_municipio as dc_municipio, g.dc_descricao as dc_tipo ";
         vlc_sql += "from veiculo a " ;
-        vlc_sql += "inner join categoriaVeiculo b on a.fk_categoria = b.id_categoria ";
-        vlc_sql += "inner join corVeiulo c on a.fk_cor = c.id_cor ";
-        vlc_sql += "inner join especieVeiulo d on a.fk_especie = d.id_especie ";
-        vlc_sql += "inner join municipio f on a.fk_municipio = f.id_municipio ";
-        vlc_sql += "inner join tipoVeiculo g on a.fk_tipo = g.id_tipo ";
+        vlc_sql += "left join categoriaVeiculo b on a.fk_categoria = b.id_categoria ";
+        vlc_sql += "left join corVeiculo c on a.fk_cor = c.id_cor ";
+        vlc_sql += "left join especieVeiculo d on a.fk_especie = d.id_especie ";
+        vlc_sql += "left join marcaDenatranVeiculo e on a.fk_marcaDenatran = e.id_marcaDentran";
+        vlc_sql += "left join municipio f on a.fk_municipio = f.id_municipio ";
+        vlc_sql += "left join tipoVeiculo g on a.fk_tipo = g.id_tipo ";
         vlc_sql += "where a.dc_placa = '" + placa + "' ";
         
         Query query = session.createSQLQuery(vlc_sql);

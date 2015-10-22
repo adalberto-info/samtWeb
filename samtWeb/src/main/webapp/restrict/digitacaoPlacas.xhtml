@@ -30,7 +30,9 @@
                         </h:panelGrid> 
                         <h:panelGrid columns="4">
                             <h:outputText value="Data"/>
-                            <h:inputText id="dt_dataInfracao" value="#{mbInfracao.infracao.dt_dataInfracao}" size="10"/> 
+                            <h:outputText id="dt_dataInfracao" value="#{mbInfracao.infracao.dt_dataInfracao}">
+                                <f:convertDateTime pattern="dd-MM-yyyy"/>
+                            </h:outputText>
                             <h:outputText value="Vel. Permitida"/>
                             <h:inputText id="nr_velPermitida" value="#{mbInfracao.infracao.nr_velocidadePermitida}" size="5"/>
                             <h:outputText value="Hora"/>
@@ -49,8 +51,8 @@
                             <h:inputText id="fk_enquadramento" value="#{mbInfracao.infracao.fk_enquadramento}" size="10"/>
                             <h:outputText value="Cor"/>
                             <h:outputText value="Categoria"/>
-                            <h:inputText id="dc_cor" size="15"/>
-                            <h:inputText id="dc_categoria" size="30"/>             
+                            <h:inputText id="dc_cor" value="#{mbInfracao.infracaoVeiculo.dc_cor}"  size="15"/>
+                            <h:inputText id="dc_categoria" value="#{mbInfracao.infracaoVeiculo.dc_categoria}" size="30"/>             
                         </h:panelGrid>
                         <h:panelGrid columns="3">
                             <h:outputText value="Espécie"/>

@@ -129,7 +129,7 @@ public class MbInicializaTabela implements Serializable {
 
         query.setParameter("vlc_id_hashInfracao", "2");
         query.setParameter("vlc_dc_numeroAit", "222222222");
-        query.setParameter("vlc_dc_placaVeiculo", "FCG4105");
+        query.setParameter("vlc_dc_placaVeiculo", "CSR6521");
         query.setParameter("vlc_dataJuliana", "999999");
         query.setParameter("vlc_dc_matriculaAgente", "000000");
         query.setParameter("vlc_dc_serieEquipamento", " ");
