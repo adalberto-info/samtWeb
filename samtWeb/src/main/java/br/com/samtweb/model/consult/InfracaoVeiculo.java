@@ -18,11 +18,12 @@ public class InfracaoVeiculo {
     private int nr_renavam;
 
     private String dc_especie;
-    private String dc_marca;
+    private String dc_marcaDenatran;
     private String dc_cor;
     private String dc_categoria;
     private String dc_tipo;
     private String dc_municipio;
+    private String dc_uf;
 
     public int getId_veiculo() {
         return id_veiculo;
@@ -112,12 +113,12 @@ public class InfracaoVeiculo {
         this.dc_especie = dc_especie;
     }
 
-    public String getDc_marca() {
-        return dc_marca;
+    public String getDc_marcaDenatran() {
+        return dc_marcaDenatran;
     }
 
-    public void setDc_marca(String dc_marca) {
-        this.dc_marca = dc_marca;
+    public void setDc_marcaDenatran(String dc_marcaDenatran) {
+        this.dc_marcaDenatran = dc_marcaDenatran;
     }
 
     public String getDc_cor() {
@@ -151,5 +152,14 @@ public class InfracaoVeiculo {
     public void setDc_municipio(String dc_municipio) {
         this.dc_municipio = dc_municipio;
     }
+
+    public String getDc_uf() {
+        return dc_uf;
+    }
+
+    public void setDc_uf(String dc_uf) {
+        this.dc_uf = dc_uf;
+    }
+
     
 }

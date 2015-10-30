@@ -58,19 +58,19 @@
                             <h:outputText value="Espécie"/>
                             <h:outputText value="Tipo"/>
                             <h:outputText value="Ano"/>
-                            <h:inputText id="dc_especie" size="15"/>
-                            <h:inputText id="dc_tipo" size="20"/>
-                            <h:inputText id="nr_anoModelo" size="4"/>
+                            <h:inputText id="dc_especie" value="#{mbInfracao.infracaoVeiculo.dc_especie}" size="20"/>
+                            <h:inputText id="dc_tipo" value="#{mbInfracao.infracaoVeiculo.dc_tipo}" size="20"/>
+                            <h:inputText id="nr_anoModelo" value="#{mbInfracao.infracaoVeiculo.nr_anoModelo}" size="4"/>
                         </h:panelGrid>
                         <h:panelGrid columns="1">
                             <h:outputText value="Marca/Modelo"/>
-                            <h:inputText id="dc_marca" size="35"/>
+                            <h:inputText id="dc_marcaDenatran" value="#{mbInfracao.infracaoVeiculo.dc_marcaDenatran}" size="35"/>
                         </h:panelGrid>
                         <h:panelGrid columns="2">
                             <h:outputText value="Município"/>
                             <h:outputText value="UF"/>
-                            <h:inputText id="dc_municipio" size="40"/>
-                            <h:inputText id="dc_uf" size="2"/>
+                            <h:inputText id="dc_municipio" value="#{mbInfracao.infracaoVeiculo.dc_municipio}" size="40"/>
+                            <h:inputText id="dc_uf" value="#{mbInfracao.infracaoVeiculo.dc_uf}" size="2"/>
                         </h:panelGrid>
                         <h:panelGrid columns="1">
                             <h:outputText value="País"/>
