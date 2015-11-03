@@ -31,13 +31,12 @@ public class MbInfracao implements Serializable {
     private InfracaoVeiculo infracaoVeiculo = new InfracaoVeiculo();
 
     private List<Infracao> infracoes;
-    private List<InfracaoVeiculo> infracaoVeiculos;
     private List lista;
     private int vln_indice = 0;
 
     public MbInfracao(){
 	getInfracoes();
-	this.infracao = this.infracoes.get(vln_indice);
+        this.infracao = this.infracoes.get(vln_indice);
         procuraPlaca(infracao.getDc_placaVeiculo());
     }
 
@@ -129,9 +128,6 @@ public class MbInfracao implements Serializable {
         this.infracaoVeiculo = infracaoVeiculo;
     }
 
-    public List<InfracaoVeiculo> getInfracaoVeiculos(){
-        return infracaoVeiculos;
-    }
 
 
 }
