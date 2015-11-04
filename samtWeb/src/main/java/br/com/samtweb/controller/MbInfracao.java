@@ -120,6 +120,13 @@ public class MbInfracao implements Serializable {
 
     }
 
+    public String getDc_local(int nr_codigoLocal){
+        String vlc_retorno = "";
+        
+        
+        return vlc_retorno; 
+    }
+    
     public InfracaoVeiculo getInfracaoVeiculo(){
         return this.infracaoVeiculo;
     }

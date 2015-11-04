@@ -55,6 +55,7 @@ dt. inclusão: 20/05/2015
         <mapping class="br.com.samtweb.model.entities.TipoInconsistencia"/>
         <mapping class="br.com.samtweb.model.entities.Status"/> 
         <mapping class="br.com.samtweb.model.entities.Processo"/>
+        <mapping class="br.com.samtweb.model.entities.Local"/>
     </session-factory>
 </hibernate-configuration>
 
