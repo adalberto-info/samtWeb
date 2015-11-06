@@ -1,13 +1,11 @@
-
 package br.com.samtweb.controller;
 
 /**
  * @autor: Adalberto Kamida
  * @dt. inclusao: 01/10/2015
  */
-
-
 import br.com.samtweb.model.consult.InfracaoVeiculo;
+import br.com.samtweb.model.consult.InfracaoComplemento;
 import br.com.samtweb.model.dao.HibernateDAO;
 import br.com.samtweb.model.dao.InterfaceDAO;
 import br.com.samtweb.model.entities.Infracao;
@@ -22,9 +20,10 @@ import javax.faces.context.FacesContext;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 
-@ManagedBean(name="mbInfracao")
+@ManagedBean(name = "mbInfracao")
 @SessionScoped
 public class MbInfracao implements Serializable {
+
     private static final long serialVersioUID = 1L;
 
     private Infracao infracao = new Infracao();
@@ -34,63 +33,68 @@ public class MbInfracao implements Serializable {
     private List lista;
     private int vln_indice = 0;
 
-    public MbInfracao(){
-	getInfracoes();
+    private String dc_local;
+
+    public MbInfracao() {
+
+        getInfracoes();
         this.infracao = this.infracoes.get(vln_indice);
         procuraPlaca(infracao.getDc_placaVeiculo());
+        procuraInfracaoLocal(infracao.getNr_codigoLocal());
     }
 
-    private InterfaceDAO<Infracao> infracaoDAO(){
-        InterfaceDAO<Infracao> infracaoDAO= new HibernateDAO<Infracao>(Infracao.class, FacesContextUtil.getRequestSession());
+    private InterfaceDAO<Infracao> infracaoDAO() {
+        InterfaceDAO<Infracao> infracaoDAO = new HibernateDAO<Infracao>(Infracao.class, FacesContextUtil.getRequestSession());
         return infracaoDAO;
     }
 
-    public void limpaInfracao(){
+    public void limpaInfracao() {
         infracao = new Infracao();
     }
 
-    public Infracao getInfracao(){
+    public Infracao getInfracao() {
         return infracao;
     }
 
-    public void setInfracao(Infracao infracao){
+    public void setInfracao(Infracao infracao) {
         this.infracao = infracao;
     }
 
-    public List<Infracao> getInfracoes(){
+    public List<Infracao> getInfracoes() {
         infracoes = infracaoDAO().getEntities();
         return infracoes;
     }
 
     public void proximoRegistro() {
         vln_indice++;
-        if (vln_indice > (this.infracoes.size()-1)){
-            vln_indice = (this.infracoes.size()-1);
+        if (vln_indice > (this.infracoes.size() - 1)) {
+            vln_indice = (this.infracoes.size() - 1);
         }
         this.infracao = this.infracoes.get(vln_indice);
         procuraPlaca(infracao.getDc_placaVeiculo());
+        procuraInfracaoLocal(infracao.getNr_codigoLocal());
     }
 
-    public void anteriorRegistro(){
+    public void anteriorRegistro() {
         vln_indice--;
-        if (vln_indice < 0){
+        if (vln_indice < 0) {
             vln_indice = 0;
         }
         this.infracao = this.infracoes.get(vln_indice);
         procuraPlaca(infracao.getDc_placaVeiculo());
+        procuraInfracaoLocal(infracao.getNr_codigoLocal());
     }
 
-    public void procuraPlaca(String placa){
+    public void procuraPlaca(String placa) {
 
         Session session = FacesContextUtil.getRequestSession();
-        String vlc_sql, vlc_parametrosSQL;
-        int vln_resultado = 0;
+        String vlc_sql;
 
         vlc_sql = "select a.dc_placa, a.fk_categoria, a.fk_cor, a.fk_especie, a.fk_marcaDenatran, ";
         vlc_sql += "a.fk_municipio, a.fk_tipo, a.nr_anoModelo, a.nr_renavam, ifnull(b.dc_descricao,' ') as dc_categoria, ";
         vlc_sql += "ifnull(c.dc_descricao,' ') as dc_cor, ifnull(d.dc_descricao,' ') as dc_especie, ifnull(e.dc_descricao,' ') as dc_marcaDenatran, ";
         vlc_sql += "ifnull(f.dc_municipio,' ') as dc_municipio, ifnull(g.dc_descricao,' ') as dc_tipo, ifnull(h.dc_sigla, ' ') as dc_uf  ";
-        vlc_sql += "from veiculo a " ;
+        vlc_sql += "from veiculo a ";
         vlc_sql += "left join categoriaVeiculo b on a.fk_categoria = b.id_categoria ";
         vlc_sql += "left join corVeiculo c on a.fk_cor = c.id_cor ";
         vlc_sql += "left join especieVeiculo d on a.fk_especie = d.id_especie ";
@@ -104,9 +108,9 @@ public class MbInfracao implements Serializable {
         lista = query.list();
 
         Iterator iterator = lista.iterator();
-        
-        if (iterator.hasNext()){
-            Object[] row = (Object[])iterator.next();
+
+        if (iterator.hasNext()) {
+            Object[] row = (Object[]) iterator.next();
             infracaoVeiculo.setDc_categoria(row[9].toString());
             infracaoVeiculo.setDc_cor(row[10].toString());
             infracaoVeiculo.setDc_especie(row[11].toString());
@@ -117,24 +121,43 @@ public class MbInfracao implements Serializable {
             infracaoVeiculo.setNr_anoModelo(Integer.parseInt(row[7].toString()));
         }
 
-
     }
 
-    public String getDc_local(int nr_codigoLocal){
-        String vlc_retorno = "";
-        
-        
-        return vlc_retorno; 
+    public void procuraInfracaoLocal(int nr_codLocal) {
+        Session session = FacesContextUtil.getRequestSession();
+        String vlc_sql, vlc_parametrosSQL;
+
+        if (nr_codLocal > 0) {
+
+            vlc_sql = "select a.id_codigoLocal, a.dc_local ";
+            vlc_sql += "from local a where a.id_codigoLocal = " + nr_codLocal;
+
+            SQLQuery query = session.createSQLQuery(vlc_sql);
+            lista = query.list();
+
+            Iterator iterator = lista.iterator();
+
+            if (iterator.hasNext()) {
+                Object[] row = (Object[]) iterator.next();
+                this.dc_local = row[2].toString();
+            }
+        }
     }
-    
-    public InfracaoVeiculo getInfracaoVeiculo(){
+
+    public InfracaoVeiculo getInfracaoVeiculo() {
         return this.infracaoVeiculo;
     }
 
-    public void setInfracaoVeiculo(InfracaoVeiculo infracaoVeiculo){
+    public void setInfracaoVeiculo(InfracaoVeiculo infracaoVeiculo) {
         this.infracaoVeiculo = infracaoVeiculo;
     }
 
+    public String getDc_local() {
+        return dc_local;
+    }
 
+    public void setDc_local(String dc_local) {
+        this.dc_local = dc_local;
+    }
 
 }
