@@ -126,7 +126,7 @@ public class MbInfracao implements Serializable {
     public void procuraInfracaoLocal(int nr_codLocal) {
         Session session = FacesContextUtil.getRequestSession();
         String vlc_sql, vlc_parametrosSQL;
-
+        this.dc_local = " ";
         if (nr_codLocal > 0) {
 
             vlc_sql = "select a.id_codigoLocal, a.dc_local ";
@@ -139,7 +139,7 @@ public class MbInfracao implements Serializable {
 
             if (iterator.hasNext()) {
                 Object[] row = (Object[]) iterator.next();
-                this.dc_local = row[2].toString();
+                this.dc_local = row[1].toString();
             }
         }
     }
