@@ -12,16 +12,18 @@
 
     <ui:define name="tarefas">
         <p:fieldset legend="Tarja Quadriculada">
-            <h:form prependId="false" id="formTarjaQuadriculada">
-                    <p:growl id="msg0" showDetail="true" autoUpdate="true"/>
 
-                    <h:panelGrid columns="1">
+            <h:form enctype="multipart/form-data" id="formTarjaQuadriculada">
+
+                <p:growl id="msg0" showDetail="true" />
+
+                    <h:panelGrid columns="2">
                     
-                        <p:imageCropper value="#{cropper.croppedImage}" image="#{cropper.imagemVeiculo}" initialCoords="225,75,300,125" id="imageCropper"/>
-
-                    <p:commandButton value="Cortar" actionListener="#{cropper.crop()}" icon="ui-icon-scissors" update="@form"/>
-
+                        <p:imageCropper value="#{cropper.croppedImage}" image="#{cropper.imagemVeiculo}" initialCoords="225,75,300,125" id="imageCropper" />
+                        <p:graphicImage id="localCroppedImage" value="/temp/1_0.jpg" cache="false"/>  
+                        <p:commandButton value="Cortar" action="#{cropper.crop()}" icon="ui-icon-scissors" update="localCroppedImage"/>
                     </h:panelGrid>    
+
             </h:form>        
         </p:fieldset>   
     </ui:define>

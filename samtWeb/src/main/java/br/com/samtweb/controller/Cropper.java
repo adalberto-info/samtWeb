@@ -5,7 +5,10 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.channels.FileChannel;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -29,15 +32,16 @@ import org.primefaces.model.CroppedImage;
 public class Cropper {
 
     private CroppedImage croppedImage;
-    private String imagemVeiculo = "";
+    private String imagemVeiculo;
+    private String newImageName;
+    
     
     public Cropper(){
         ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-//        setImagemVeiculo(servletContext.getRealPath("") + File.separator + "temp" + File.separator + "1_0.jpg");
-        setImagemVeiculo("/temp/1_0.jpg");
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Imagem: " + this.imagemVeiculo, ""));
 
-//        setImagemVeiculo("/temp/1_0.jpg");
+        setImagemVeiculo("/temp/1_0.jpg");
+//        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Imagem: " + this.imagemVeiculo, ""));
+
 
     }
     
@@ -73,9 +77,9 @@ public class Cropper {
        graphics.dispose(); 
        File ImagemDestino = new File("C:/TEMP_PESSOAL/image_obliterada.jpg");
        ImageIO.write(image, "jpg", ImagemDestino);
-//       ImagemDestino = new File(servletContext.getRealPath("") + File.separator + "temp" + File.separator + "1_0.jpg");         
-       ImagemDestino = new File("/temp/1_0.jpg");         
+       ImagemDestino = new File(servletContext.getRealPath("") + File.separator + "temp" + File.separator + "1_0.jpg");         
        ImageIO.write(image, "jpg", ImagemDestino);
+       newImageName = servletContext.getRealPath("") + File.separator + "temp" + File.separator + "1_0.jpg";
        return null;
     }
 
@@ -87,11 +91,6 @@ public class Cropper {
         this.croppedImage = croppedImage;
     }
 
-//    public String getImagemVeiculo(){
-//        ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-//        imagemVeiculo = servletContext.getRealPath("") + File.separator + "temp" + File.separator + "1_0.jpg";
-//        return imagemVeiculo;
-//    }
     public String getImagemVeiculo() {
         return imagemVeiculo;
     }
@@ -100,4 +99,38 @@ public class Cropper {
         this.imagemVeiculo = imagemVeiculo;
     }
 
+    public String getNewImageName() {
+        return newImageName;
+    }
+
+    public void setNewImageName(String newImageName) {
+        this.newImageName = newImageName;
+    }
+
+    
+    
+    public static void copyFile(File source, File destination) throws IOException{  
+      
+    if (destination.exists())     
+        destination.delete();     
+  
+    FileChannel sourceChannel = null;     
+    FileChannel destinationChannel = null;     
+  
+    try {     
+          
+        sourceChannel = new FileInputStream(source).getChannel();     
+        destinationChannel = new FileOutputStream(destination).getChannel();     
+        sourceChannel.transferTo(0, sourceChannel.size(), destinationChannel);   
+          
+    } finally {     
+          
+        if (sourceChannel != null && sourceChannel.isOpen())     
+            sourceChannel.close();     
+        if (destinationChannel != null && destinationChannel.isOpen())     
+            destinationChannel.close();     
+    }     
+  
+    }  
+    
 }
