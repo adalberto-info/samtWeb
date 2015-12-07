@@ -49,35 +49,14 @@ public class Cropper {
         if(croppedImage == null)
         return null;
         ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-
-//        String NewFileName = servletContext.getRealPath("") + File.separator + "imagens" + File.separator + croppedImage.getOriginalFilename() + "cropped.jpg";
-//        String NewFileName = servletContext.getRealPath("") + File.separator + "imagens" + File.separator + "teste.jpg";
-        String NewFileName = "c:/temp_pessoal/teste.jpg";
-
-        FileImageOutputStream imageOutput;
-        try {
-            imageOutput = new FileImageOutputStream(new File(NewFileName));
-            imageOutput.write(croppedImage.getBytes(),0, croppedImage.getBytes().length);
-            imageOutput.close();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
         
-       BufferedImage image = ImageIO.read(new File("C:/desenvjava/trunk/projetos/samtWeb/samtWeb/src/main/webapp/temp/1_0.jpg"));   
-       BufferedImage image2 = ImageIO.read(new File("C:/java/teste.jpg"));   
-      
-       int w = image2.getWidth();   
-       int h = image2.getHeight();   
+       BufferedImage image = ImageIO.read(new File(servletContext.getRealPath("") + File.separator + "temp" + File.separator + "1_0.jpg"));   
       
        Graphics2D graphics = image.createGraphics();  
-//       graphics.drawImage(image2, 0, 0, w, h, null);  
-//       graphics.drawImage(image2, croppedImage.getTop(), croppedImage.getLeft(), croppedImage.getWidth(), croppedImage.getHeight(), null);  
        graphics.setColor(Color.BLACK);
        graphics.fillRect(croppedImage.getLeft(), croppedImage.getTop(), croppedImage.getWidth(), croppedImage.getHeight());
        graphics.dispose(); 
-       File ImagemDestino = new File("C:/TEMP_PESSOAL/image_obliterada.jpg");
-       ImageIO.write(image, "jpg", ImagemDestino);
-       ImagemDestino = new File(servletContext.getRealPath("") + File.separator + "temp" + File.separator + "1_0.jpg");         
+       File ImagemDestino = new File(servletContext.getRealPath("") + File.separator + "temp" + File.separator + "1_0.jpg");         
        ImageIO.write(image, "jpg", ImagemDestino);
        newImageName = servletContext.getRealPath("") + File.separator + "temp" + File.separator + "1_0.jpg";
        return null;
@@ -107,6 +86,46 @@ public class Cropper {
         this.newImageName = newImageName;
     }
 
+
+    public String zoomPanoramica() throws IOException{
+        if(croppedImage == null)
+        return null;
+        ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+
+//        String NewFileName = servletContext.getRealPath("") + File.separator + "imagens" + File.separator + croppedImage.getOriginalFilename() + "cropped.jpg";
+//        String NewFileName = servletContext.getRealPath("") + File.separator + "imagens" + File.separator + "teste.jpg";
+//        String NewFileName = "c:/temp_pessoal/teste.jpg";
+
+//        FileImageOutputStream imageOutput;
+//        try {
+//            imageOutput = new FileImageOutputStream(new File(NewFileName));
+//            imageOutput.write(croppedImage.getBytes(),0, croppedImage.getBytes().length);
+//            imageOutput.close();
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }
+        
+       BufferedImage image = ImageIO.read(new File(servletContext.getRealPath("") + File.separator + "temp" + File.separator + "1_0.jpg"));   
+ //      BufferedImage image2 = ImageIO.read(new File("C:/java/teste.jpg"));   
+      
+//       int w = image2.getWidth();   
+//       int h = image2.getHeight();   
+      
+       Graphics2D graphics = image.createGraphics();  
+//       graphics.drawImage(image2, 0, 0, w, h, null);  
+//       graphics.drawImage(image2, croppedImage.getTop(), croppedImage.getLeft(), croppedImage.getWidth(), croppedImage.getHeight(), null);  
+       graphics.setColor(Color.BLACK);
+       graphics.fillRect(croppedImage.getLeft(), croppedImage.getTop(), croppedImage.getWidth(), croppedImage.getHeight());
+       graphics.dispose(); 
+       File ImagemDestino = new File("C:/TEMP_PESSOAL/image_obliterada.jpg");
+//       ImageIO.write(image, "jpg", ImagemDestino);
+       ImagemDestino = new File(servletContext.getRealPath("") + File.separator + "temp" + File.separator + "1_0.jpg");         
+       ImageIO.write(image, "jpg", ImagemDestino);
+       newImageName = servletContext.getRealPath("") + File.separator + "temp" + File.separator + "1_0.jpg";
+       return null;
+    
+    
+}
     
     
     public static void copyFile(File source, File destination) throws IOException{  
