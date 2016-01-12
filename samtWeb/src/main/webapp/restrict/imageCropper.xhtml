@@ -11,16 +11,19 @@
                 template="./../resources/templateMaster.xhtml">
 
     <ui:define name="tarefas">
-        <p:fieldset legend="Tarja Quadriculada">
-            <h:form id="formTarjaQuadriculada"  prependId="false">
-
+        <p:fieldset legend="Tarja Ocultar">
+            <h:form id="formTarjaOcultar">
+                <p:outputPanel id="outputPanelUpload">
                 <p:growl id="msg0" showDetail="true" />
-                <h:panelGrid columns="2">
+                <h:panelGrid columns="2" id="panelImagem">
 
-                    <p:imageCropper value="#{cropper.croppedImage}" image="#{cropper.imagemVeiculo}" initialCoords="225,75,300,125" id="imageCropper" />
-<!--                    <p:graphicImage id="localCroppedImage" value="/temp/1_0.jpg" cache="false"/>  -->
-                    <p:commandButton value="Obliterar" action="#{cropper.crop()}" icon="ui-icon-scissors" update="@form"/>
+                    <p:imageCropper value="#{cropper.croppedImage}" image="#{cropper.imagemVeiculo}" initialCoords="225,75,300,125" id="imageCropper" rendererType="" />
+                    <p:graphicImage id="localCroppedImage" value="/temp/1_0.jpg" cache="false"/>  
+<!--                    <p:commandButton value="Obliterar" action="#//{cropper.crop()}" icon="ui-icon-scissors" ignoreAutoUpdate="true" process="@form" update="@form" />  -->
+                    <h:outputText value=" "/>
+                    <h:commandButton value="Obliterar" actionListener="#{cropper.crop()}" />
                 </h:panelGrid>    
+                </p:outputPanel>
             </h:form>        
         </p:fieldset>   
     </ui:define>

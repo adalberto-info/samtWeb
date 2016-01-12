@@ -9,14 +9,19 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
+import javax.faces.application.Application;
 import javax.faces.application.FacesMessage;
+import javax.faces.application.ViewHandler;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.imageio.ImageIO;
 import javax.imageio.stream.FileImageOutputStream;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
 import org.primefaces.component.imagecropper.ImageCropper;
 import org.primefaces.component.imagecropper.ImageCropperRenderer;
 import org.primefaces.model.CroppedImage;
@@ -59,6 +64,7 @@ public class Cropper {
        File ImagemDestino = new File(servletContext.getRealPath("") + File.separator + "temp" + File.separator + "1_0.jpg");         
        ImageIO.write(image, "jpg", ImagemDestino);
        newImageName = servletContext.getRealPath("") + File.separator + "temp" + File.separator + "1_0.jpg";
+       setImagemVeiculo("/temp/1_0.jpg");
        return null;
     }
 
@@ -86,7 +92,7 @@ public class Cropper {
         this.newImageName = newImageName;
     }
 
-
+    
     public String zoomPanoramica() throws IOException{
         if(croppedImage == null)
         return null;
