@@ -112,7 +112,7 @@ public class Infracao implements Serializable {
     @Column(name="fk_tipoInconsistencia", nullable=false, length=4)
     private int fk_tipoInconsistencia;
     @Column(name="dc_placaVeiculo", nullable=false, length=16)
-    private String dc_placaVeiculo;
+     private String dc_placaVeiculo;
 
     public String getId_hashInfracao() {
         return id_hashInfracao;
